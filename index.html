@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Tools - Powerful Tools for YouTube Creators</title>
+    <meta name="description" content="Enhance your YouTube channel with our powerful tools. AI comment replies, script generation, thumbnail tools, and more to help creators grow their channels.">
+    <meta name="keywords" content="YouTube tools, creator tools, YouTube growth, video tools, YouTube analytics">
+    <meta name="author" content="YouTube Tools">
+    <meta property="og:title" content="YouTube Tools - Powerful Tools for YouTube Creators">
+    <meta property="og:description" content="Enhance your YouTube channel with our powerful tools for creators.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://youtubetools.example.com">
+    <meta name="robots" content="index, follow">
+    
+    <style>
+        :root {
+            --primary-color: #FF0000;
+            --secondary-color: #282828;
+            --accent-color: #4285F4;
+            --light-color: #f9f9f9;
+            --dark-color: #212121;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(255,0,0,0.1) 0%, rgba(255,255,255,1) 100%);
+        }
+        
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        button:hover {
+            background-color: #cc0000;
+        }
+        
+        .secondary-btn {
+            background-color: var(--accent-color);
+        }
+        
+        .secondary-btn:hover {
+            background-color: #3367d6;
+        }
+        
+        .tools-section {
+            padding: 3rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .tool-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .tool-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .tool-card-content {
+            padding: 1.5rem;
+        }
+        
+        .tool-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .tool-card p {
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+        
+        .features {
+            padding: 3rem 0;
+            background-color: white;
+        }
+        
+        .features h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+        
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .testimonials {
+            padding: 3rem 0;
+            background-color: var(--light-color);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-card .quote {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-card .author {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .stats {
+            padding: 3rem 0;
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .stat-item h3 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .copyright {
+            border-top: 1px solid #444;
+            padding-top: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="https://via.placeholder.com/40" alt="YouTube Tools Logo">
+                <h1>YouTube Tools</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/tools">All Tools</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>Powerful Tools for YouTube Creators</h2>
+                <p>Boost your YouTube channel with our suite of professional tools designed to save you time, increase engagement, and help you grow your audience.</p>
+                <div class="cta-buttons">
+                    <button id="exploreToolsBtn">Explore Tools</button>
+                    <button class="secondary-btn" id="tryCommentReplyBtn">Try AI Comment Reply</button>
+                </div>
+            </div>
+        </section>
+        
+        <section class="tools-section">
+            <div class="container">
+                <h2 class="section-title">Popular Tools</h2>
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <img src="https://via.placeholder.com/600x400?text=AI+Comment+Reply" alt="AI Comment Reply">
+                        <div class="tool-card-content">
+                            <h3>AI Comment Reply Generator</h3>
+                            <p>Generate perfect, personalized replies to YouTube comments instantly with our AI-powered tool.</p>
+                            <button class="tool-btn" data-tool="comment-reply">Try Now</button>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <img src="https://via.placeholder.com/600x400?text=Video+Script+Generator" alt="Video Script Generator">
+                        <div class="tool-card-content">
+                            <h3>Video Script Generator</h3>
+                            <p>Create engaging video scripts in minutes with our AI-powered script writing tool.</p>
+                            <button class="tool-btn" data-tool="script-generator">Try Now</button>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <img src="https://via.placeholder.com/600x400?text=Thumbnail+Combiner" alt="Thumbnail Combiner">
+                        <div class="tool-card-content">
+                            <h3>Thumbnail Combiner</h3>
+                            <p>Combine multiple images to create eye-catching YouTube thumbnails that drive clicks.</p>
+                            <button class="tool-btn" data-tool="thumbnail-combiner">Try Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="features">
+            <div class="container">
+                <h2>Why Choose YouTube Tools?</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>Save Time</h3>
+                        <p>Our tools automate repetitive tasks so you can focus on creating great content.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Grow Faster</h3>
+                        <p>Optimize your channel with tools designed to increase engagement and subscribers.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-brain"></i>
+                        <h3>AI Powered</h3>
+                        <p>Leverage artificial intelligence to enhance your YouTube strategy.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-bolt"></i>
+                        <h3>Instant Results</h3>
+                        <p>Get what you need immediately without complicated setups.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-globe"></i>
+                        <h3>Multi-Language</h3>
+                        <p>Support for multiple languages to reach a global audience.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-crown"></i>
+                        <h3>Professional Quality</h3>
+                        <p>Tools designed by YouTube experts to deliver professional results.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="stats">
+            <div class="container">
+                <h2>Trusted by YouTube Creators Worldwide</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h3>50,000+</h3>
+                        <p>Creators</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>10M+</h3>
+                        <p>Comments Processed</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>100+</h3>
+                        <p>Countries</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>24/7</h3>
+                        <p>Support</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="testimonials">
+            <div class="container">
+                <h2 class="section-title">What Creators Say</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                        <p class="quote">"The AI Comment Reply tool saved me hours each week. My engagement has never been higher!"</p>
+                        <p class="author">- Sarah K., Tech Channel (250K subs)</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="quote">"I went from 10K to 100K subscribers in 6 months using these tools to optimize my content."</p>
+                        <p class="author">- Miguel R., Cooking Channel</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="quote">"The script generator helps me create better structured videos that keep viewers watching longer."</p>
+                        <p class="author">- Priya T., Education Channel (500K subs)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>YouTube Tools</h3>
+                    <p>Powerful tools for YouTube creators, marketers, and video enthusiasts.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/tools">All Tools</a></li>
+                        <li><a href="/pricing">Pricing</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                        <li><a href="/careers">Careers</a></li>
+                        <li><a href="/press">Press</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="/privacy">Privacy Policy</a></li>
+                        <li><a href="/terms">Terms of Service</a></li>
+                        <li><a href="/cookies">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 YouTube Tools. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Customize these links as needed
+        const toolLinks = {
+            "explore-tools": "/tools",
+            "try-comment-reply": "/ai-comment-reply",
+            "comment-reply": "/ai-comment-reply",
+            "script-generator": "/script-generator",
+            "thumbnail-combiner": "/thumbnail-combiner"
+        };
+
+        // Set up event listeners for all buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            // Main CTA buttons
+            document.getElementById('exploreToolsBtn').addEventListener('click', function() {
+                window.location.href = toolLinks["explore-tools"];
+            });
+            
+            document.getElementById('tryCommentReplyBtn').addEventListener('click', function() {
+                window.location.href = toolLinks["try-comment-reply"];
+            });
+
+            // Tool buttons
+            document.querySelectorAll('.tool-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const toolId = this.getAttribute('data-tool');
+                    if (toolLinks[toolId]) {
+                        window.location.href = toolLinks[toolId];
+                    } else {
+                        // Default fallback
+                        window.location.href = '/tools';
+                    }
+                });
+            });
+        });
+
+        // To change a link, simply update the toolLinks object above
+        // Example to change the script generator link:
+        // toolLinks["script-generator"] = "/new-script-generator-url";
+    </script>
+</body>
+</html>
