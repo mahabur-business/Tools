@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Platform Content Generator | YouTube Tools - 1-Click Repurpose</title>
+    <meta name="description" content="Generate content for multiple platforms and languages from a single topic. Create optimized posts for Instagram, Facebook, Twitter, LinkedIn, and TikTok automatically.">
+    <meta name="keywords" content="content generator tool, multi-platform generator, social media automation, content automation, multilingual content">
+    <meta name="author" content="YouTube Tools">
+    <meta property="og:title" content="Multi-Platform Content Generator | YouTube Tools">
+    <meta property="og:description" content="1-click content generation for multiple platforms and languages">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://youtubetools.example.com/multi-platform-generator">
+    <meta name="robots" content="index, follow">
+    
+    <style>
+        :root {
+            --primary-color: #FF0000;
+            --secondary-color: #282828;
+            --accent-color: #4285F4;
+            --light-color: #f9f9f9;
+            --dark-color: #212121;
+            --instagram-color: #E1306C;
+            --facebook-color: #1877F2;
+            --twitter-color: #1DA1F2;
+            --linkedin-color: #0077B5;
+            --tiktok-color: #000000;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .hero {
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .tool-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .input-section {
+            margin-bottom: 2rem;
+        }
+        
+        .input-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        input[type="text"] {
+            margin-bottom: 1rem;
+        }
+        
+        .platform-options, .language-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .platform-checkbox, .language-checkbox {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem;
+            border: 1px solid #eee;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .platform-checkbox:hover, .language-checkbox:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .platform-checkbox input, .language-checkbox input {
+            margin-right: 0.8rem;
+        }
+        
+        .platform-checkbox.instagram {
+            border-left: 4px solid var(--instagram-color);
+        }
+        
+        .platform-checkbox.facebook {
+            border-left: 4px solid var(--facebook-color);
+        }
+        
+        .platform-checkbox.twitter {
+            border-left: 4px solid var(--twitter-color);
+        }
+        
+        .platform-checkbox.linkedin {
+            border-left: 4px solid var(--linkedin-color);
+        }
+        
+        .platform-checkbox.tiktok {
+            border-left: 4px solid var(--tiktok-color);
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        button:hover {
+            background-color: #cc0000;
+        }
+        
+        .secondary-btn {
+            background-color: var(--accent-color);
+        }
+        
+        .secondary-btn:hover {
+            background-color: #3367d6;
+        }
+        
+        .results-container {
+            margin-top: 2rem;
+            display: none;
+        }
+        
+        .platform-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .platform-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .platform-header {
+            padding: 0.8rem 1rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .platform-header.instagram {
+            background-color: var(--instagram-color);
+        }
+        
+        .platform-header.facebook {
+            background-color: var(--facebook-color);
+        }
+        
+        .platform-header.twitter {
+            background-color: var(--twitter-color);
+        }
+        
+        .platform-header.linkedin {
+            background-color: var(--linkedin-color);
+        }
+        
+        .platform-header.tiktok {
+            background-color: var(--tiktok-color);
+            color: white;
+        }
+        
+        .platform-header img {
+            width: 24px;
+            height: 24px;
+            margin-right: 0.8rem;
+        }
+        
+        .language-tag {
+            background-color: rgba(255,255,255,0.2);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+        
+        .platform-content {
+            padding: 1.2rem;
+            background-color: white;
+        }
+        
+        .platform-content p {
+            margin-bottom: 1rem;
+            white-space: pre-line;
+        }
+        
+        .platform-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .platform-actions button {
+            padding: 0.5rem 0.8rem;
+            font-size: 0.9rem;
+            flex: 1;
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .features {
+            padding: 3rem 0;
+            background-color: white;
+        }
+        
+        .features h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            border-top: 1px solid #444;
+            padding-top: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .platform-options, .language-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .platform-results {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="https://via.placeholder.com/40" alt="YouTube Tools Logo">
+                <h1>YouTube Tools</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/tools">All Tools</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section class="hero">
+            <h2>Multi-Platform & Multi-Language Content Generator</h2>
+            <p>Generate content for multiple platforms and languages from a single topic. Save hours of work with AI-powered content creation.</p>
+        </section>
+        
+        <section class="tool-container">
+            <div class="input-section">
+                <h3>Enter Your Topic</h3>
+                <input type="text" id="topicInput" placeholder="Enter your topic or subject (e.g., '10 Tips for Social Media Marketing')">
+                <textarea id="additionalDetails" placeholder="Optional: Add any specific details, key points, or instructions..."></textarea>
+            </div>
+            
+            <div class="input-section">
+                <h3>Select Platforms to Generate For</h3>
+                <div class="platform-options">
+                    <label class="platform-checkbox instagram">
+                        <input type="checkbox" name="platform" value="instagram" checked>
+                        Instagram Posts & Reels
+                    </label>
+                    
+                    <label class="platform-checkbox facebook">
+                        <input type="checkbox" name="platform" value="facebook" checked>
+                        Facebook Posts
+                    </label>
+                    
+                    <label class="platform-checkbox twitter">
+                        <input type="checkbox" name="platform" value="twitter" checked>
+                        Twitter Threads
+                    </label>
+                    
+                    <label class="platform-checkbox linkedin">
+                        <input type="checkbox" name="platform" value="linkedin">
+                        LinkedIn Posts
+                    </label>
+                    
+                    <label class="platform-checkbox tiktok">
+                        <input type="checkbox" name="platform" value="tiktok">
+                        TikTok Captions
+                    </label>
+                </div>
+            </div>
+            
+            <div class="input-section">
+                <h3>Select Languages</h3>
+                <div class="language-options">
+                    <label class="language-checkbox">
+                        <input type="checkbox" name="language" value="english" checked>
+                        English
+                    </label>
+                    
+                    <label class="language-checkbox">
+                        <input type="checkbox" name="language" value="spanish">
+                        Spanish
+                    </label>
+                    
+                    <label class="language-checkbox">
+                        <input type="checkbox" name="language" value="french">
+                        French
+                    </label>
+                    
+                    <label class="language-checkbox">
+                        <input type="checkbox" name="language" value="german">
+                        German
+                    </label>
+                    
+                    <label class="language-checkbox">
+                        <input type="checkbox" name="language" value="hindi">
+                        Hindi
+                    </label>
+                    
+                    <label class="language-checkbox">
+                        <input type="checkbox" name="language" value="bengali">
+                        Bengali
+                    </label>
+                    
+                    <label class="language-checkbox">
+                        <input type="checkbox" name="language" value="portuguese">
+                        Portuguese
+                    </label>
+                    
+                    <label class="language-checkbox">
+                        <input type="checkbox" name="language" value="japanese">
+                        Japanese
+                    </label>
+                    
+                    <label class="language-checkbox">
+                        <input type="checkbox" name="language" value="arabic">
+                        Arabic
+                    </label>
+                </div>
+            </div>
+            
+            <button id="generateBtn">
+                <span id="generateBtnText">Generate Content</span>
+                <span id="generateBtnLoader" style="display: none;" class="loading"></span>
+            </button>
+            
+            <div id="resultsContainer" class="results-container">
+                <h3>Generated Content for Each Platform</h3>
+                <p>AI-powered content tailored for each platform's best practices in your selected languages:</p>
+                
+                <div class="platform-results" id="platformResults">
+                    <!-- Results will be inserted here by JavaScript -->
+                </div>
+                
+                <div class="actions" style="margin-top: 2rem;">
+                    <button id="copyAllBtn" class="secondary-btn">Copy All Content</button>
+                    <button id="downloadAllBtn" class="secondary-btn">Download All</button>
+                </div>
+            </div>
+        </section>
+        
+        <section class="features">
+            <h2>Why Use Our Multi-Platform Generator?</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Save Hours of Work</h3>
+                    <p>Automatically create platform-optimized content in multiple languages from a single topic in seconds.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Platform-Specific Optimization</h3>
+                    <p>Content is tailored for each platform's algorithms, character limits, and audience expectations.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Multilingual Support</h3>
+                    <p>Reach global audiences with content automatically generated in multiple languages.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Increased Reach</h3>
+                    <p>Maximize your content's visibility by publishing optimized versions across all relevant platforms and languages.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Content Ideas</h3>
+                    <p>Get multiple post ideas from a single topic to keep your social media active across all platforms.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>SEO Boost</h3>
+                    <p>Multi-platform, multilingual content helps drive traffic back to your main channels and website.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>YouTube Tools</h3>
+                    <p>Powerful tools for content creators, marketers, and social media managers.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/tools">All Tools</a></li>
+                        <li><a href="/privacy">Privacy Policy</a></li>
+                        <li><a href="/terms">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Popular Tools</h3>
+                    <ul>
+                        <li><a href="/script-generator">Script Generator</a></li>
+                        <li><a href="/thumbnail-combiner">Thumbnail Combiner</a></li>
+                        <li><a href="/multi-platform-generator">Multi-Platform Generator</a></li>
+                        <li><a href="/analytics">Channel Analytics</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 YouTube Tools. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const generateBtn = document.getElementById('generateBtn');
+            const generateBtnText = document.getElementById('generateBtnText');
+            const generateBtnLoader = document.getElementById('generateBtnLoader');
+            const topicInput = document.getElementById('topicInput');
+            const additionalDetails = document.getElementById('additionalDetails');
+            const resultsContainer = document.getElementById('resultsContainer');
+            const platformResults = document.getElementById('platformResults');
+            const copyAllBtn = document.getElementById('copyAllBtn');
+            const downloadAllBtn = document.getElementById('downloadAllBtn');
+            
+            // Platform data
+            const platforms = {
+                instagram: {
+                    name: "Instagram",
+                    icon: "https://cdn-icons-png.flaticon.com/512/2111/2111463.png",
+                    color: "instagram"
+                },
+                facebook: {
+                    name: "Facebook",
+                    icon: "https://cdn-icons-png.flaticon.com/512/124/124010.png",
+                    color: "facebook"
+                },
+                twitter: {
+                    name: "Twitter",
+                    icon: "https://cdn-icons-png.flaticon.com/512/124/124021.png",
+                    color: "twitter"
+                },
+                linkedin: {
+                    name: "LinkedIn",
+                    icon: "https://cdn-icons-png.flaticon.com/512/174/174857.png",
+                    color: "linkedin"
+                },
+                tiktok: {
+                    name: "TikTok",
+                    icon: "https://cdn-icons-png.flaticon.com/512/3046/3046126.png",
+                    color: "tiktok"
+                }
+            };
+            
+            // Language data
+            const languages = {
+                english: { name: "English", code: "en" },
+                spanish: { name: "Spanish", code: "es" },
+                french: { name: "French", code: "fr" },
+                german: { name: "German", code: "de" },
+                hindi: { name: "Hindi", code: "hi" },
+                bengali: { name: "Bengali", code: "bn" },
+                portuguese: { name: "Portuguese", code: "pt" },
+                japanese: { name: "Japanese", code: "ja" },
+                arabic: { name: "Arabic", code: "ar" }
+            };
+            
+            // Generate content
+            generateBtn.addEventListener('click', function() {
+                const topic = topicInput.value.trim();
+                if (!topic) {
+                    alert('Please enter your topic');
+                    return;
+                }
+                
+                // Get selected platforms
+                const selectedPlatforms = Array.from(document.querySelectorAll('input[name="platform"]:checked')).map(el => el.value);
+                if (selectedPlatforms.length === 0) {
+                    alert('Please select at least one platform');
+                    return;
+                }
+                
+                // Get selected languages
+                const selectedLanguages = Array.from(document.querySelectorAll('input[name="language"]:checked')).map(el => el.value);
+                if (selectedLanguages.length === 0) {
+                    alert('Please select at least one language');
+                    return;
+                }
+                
+                // Show loading state
+                generateBtnText.textContent = "Generating...";
+                generateBtnLoader.style.display = "inline-block";
+                generateBtn.disabled = true;
+                
+                // Clear previous results
+                platformResults.innerHTML = '';
+                
+                // Show results container
+                resultsContainer.style.display = "block";
+                
+                // Scroll to results
+                setTimeout(() => {
+                    resultsContainer.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+                
+                // Simulate API delay
+                setTimeout(() => {
+                    generatePlatformContent(topic, additionalDetails.value, selectedPlatforms, selectedLanguages);
+                    
+                    // Hide loading state
+                    generateBtnText.textContent = "Generate Content";
+                    generateBtnLoader.style.display = "none";
+                    generateBtn.disabled = false;
+                }, 2000);
+            });
+            
+            function generatePlatformContent(topic, details, platformNames, languageNames) {
+                platformResults.innerHTML = '';
+                
+                platformNames.forEach(platformName => {
+                    const platform = platforms[platformName];
+                    
+                    languageNames.forEach(languageName => {
+                        const language = languages[languageName];
+                        const platformContent = generateContentForPlatform(topic, details, platformName, languageName);
+                        
+                        const platformCard = document.createElement('div');
+                        platformCard.className = 'platform-card';
+                        
+                        platformCard.innerHTML = `
+                            <div class="platform-header ${platform.color}">
+                                <div style="display: flex; align-items: center;">
+                                    <img src="${platform.icon}" alt="${platform.name} icon">
+                                    <h4>${platform.name}</h4>
+                                </div>
+                                <span class="language-tag">${language.name}</span>
+                            </div>
+                            <div class="platform-content">
+                                <p>${platformContent}</p>
+                                <div class="platform-actions">
+                                    <button class="secondary-btn copy-platform-btn" data-platform="${platformName}" data-language="${languageName}">Copy</button>
+                                    <button class="download-platform-btn" data-platform="${platformName}" data-language="${languageName}">Download</button>
+                                </div>
+                            </div>
+                        `;
+                        
+                        platformResults.appendChild(platformCard);
+                    });
+                });
+                
+                // Add event listeners to new buttons
+                document.querySelectorAll('.copy-platform-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const platform = this.getAttribute('data-platform');
+                        const language = this.getAttribute('data-language');
+                        const content = this.parentElement.parentElement.querySelector('p').textContent;
+                        copyToClipboard(content, `${platform} (${language})`);
+                    });
+                });
+                
+                document.querySelectorAll('.download-platform-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const platform = this.getAttribute('data-platform');
+                        const language = this.getAttribute('data-language');
+                        const content = this.parentElement.parentElement.querySelector('p').textContent;
+                        downloadContent(content, `${platform}-${language}`);
+                    });
+                });
+            }
+            
+            function generateContentForPlatform(topic, details, platform, language) {
+                // This would be replaced with actual AI API call in production
+                const platformTemplates = {
+                    instagram: {
+                        intro: {
+                            english: "New post alert! 🚨",
+                            spanish: "¡Nueva publicación! 🚨",
+                            french: "Nouvelle publication ! 🚨",
+                            german: "Neuer Beitrag! 🚨",
+                            hindi: "नई पोस्ट! 🚨",
+                            bengali: "নতুন পোস্ট! 🚨",
+                            portuguese: "Novo post! 🚨",
+                            japanese: "新しい投稿！ 🚨",
+                            arabic: "منشور جديد! 🚨"
+                        },
+                        point: {
+                            english: "✨ ",
+                            spanish: "✨ ",
+                            french: "✨ ",
+                            german: "✨ ",
+                            hindi: "✨ ",
+                            bengali: "✨ ",
+                            portuguese: "✨ ",
+                            japanese: "✨ ",
+                            arabic: "✨ "
+                        },
+                        hashtags: {
+                            english: "\n\n#ContentCreation #DigitalMarketing #SocialMediaTips #ContentStrategy",
+                            spanish: "\n\n#CreacionDeContenido #MarketingDigital #ConsejosRedesSociales",
+                            french: "\n\n#CreationDeContenu #MarketingNumerique #ConseilsReseauxSociaux",
+                            german: "\n\n#ContentErstellung #DigitalesMarketing #SocialMediaTipps",
+                            hindi: "\n\n#कंटेंटक्रिएशन #डिजिटलमार्केटिंग #सोशलमीडियाटिप्स",
+                            bengali: "\n\n#কন্টেন্টক্রিয়েশন #ডিজিটালমার্কেটিং #সোশ্যালমিডিয়াটিপস",
+                            portuguese: "\n\n#CriacaoDeConteudo #MarketingDigital #DicasRedesSociais",
+                            japanese: "\n\n#コンテンツ作成 #デジタルマーケティング #SNSのヒント",
+                            arabic: "\n\n#إنشاء_المحتوى #التسويق_الرقمي #نصائح_السوشيال_ميديا"
+                        }
+                    },
+                    facebook: {
+                        intro: {
+                            english: "Sharing some insights about: " + topic,
+                            spanish: "Compartiendo algunos consejos sobre: " + topic,
+                            french: "Je partage quelques conseils sur : " + topic,
+                            german: "Einige Einblicke zu: " + topic,
+                            hindi: topic + " के बारे में कुछ जानकारी साझा कर रहा हूं",
+                            bengali: topic + " সম্পর্কে কিছু তথ্য শেয়ার করছি",
+                            portuguese: "Compartilhando algumas dicas sobre: " + topic,
+                            japanese: topic + "についての洞察を共有します",
+                            arabic: "مشاركة بعض الأفكار حول: " + topic
+                        },
+                        point: {
+                            english: "• ",
+                            spanish: "• ",
+                            french: "• ",
+                            german: "• ",
+                            hindi: "• ",
+                            bengali: "• ",
+                            portuguese: "• ",
+                            japanese: "• ",
+                            arabic: "• "
+                        },
+                        hashtags: {
+                            english: "\n\n#FacebookMarketing #ContentCreation #SocialMediaStrategy",
+                            spanish: "\n\n#MarketingEnFacebook #CreacionDeContenido",
+                            french: "\n\n#MarketingFacebook #CreationDeContenu",
+                            german: "\n\n#FacebookMarketing #ContentErstellung",
+                            hindi: "\n\n#फेसबुकमार्केटिंग #कंटेंटक्रिएशन",
+                            bengali: "\n\n#ফেসবুকমার্কেটিং #কন্টেন্টক্রিয়েশন",
+                            portuguese: "\n\n#MarketingNoFacebook #CriacaoDeConteudo",
+                            japanese: "\n\n#Facebookマーケティング #コンテンツ作成",
+                            arabic: "\n\n#تسويق_فيسبوك #إنشاء_المحتوى"
+                        }
+                    },
+                    twitter: {
+                        intro: {
+                            english: "Thread 🧵 about: " + topic,
+                            spanish: "Hilo 🧵 sobre: " + topic,
+                            french: "Thread 🧵 sur : " + topic,
+                            german: "Thread 🧵 zu: " + topic,
+                            hindi: topic + " के बारे में थ्रेड 🧵",
+                            bengali: topic + " সম্পর্কে থ্রেড 🧵",
+                            portuguese: "Thread 🧵 sobre: " + topic,
+                            japanese: topic + "についてのスレッド 🧵",
+                            arabic: "سلسلة تغريدات 🧵 حول: " + topic
+                        },
+                        point: {
+                            english: "→ ",
+                            spanish: "→ ",
+                            french: "→ ",
+                            german: "→ ",
+                            hindi: "→ ",
+                            bengali: "→ ",
+                            portuguese: "→ ",
+                            japanese: "→ ",
+                            arabic: "→ "
+                        },
+                        hashtags: {
+                            english: "\n\n#TwitterThread #ContentMarketing #SocialMediaTips",
+                            spanish: "\n\n#HiloDeTwitter #MarketingDeContenidos",
+                            french: "\n\n#ThreadTwitter #MarketingDeContenu",
+                            german: "\n\n#TwitterThread #ContentMarketing",
+                            hindi: "\n\n#ट्विटरथ्रेड #कंटेंटमार्केटिंग",
+                            bengali: "\n\n#টুইটারথ্রেড #কন্টেন্টমার্কেটিং",
+                            portuguese: "\n\n#ThreadNoTwitter #MarketingDeConteudo",
+                            japanese: "\n\n#Twitterスレッド #コンテンツマーケティング",
+                            arabic: "\n\n#سلسلة_تغريدات #تسويق_المحتوى"
+                        }
+                    },
+                    linkedin: {
+                        intro: {
+                            english: "Professional insights about: " + topic,
+                            spanish: "Perspectivas profesionales sobre: " + topic,
+                            french: "Perspectives professionnelles sur : " + topic,
+                            german: "Fachliche Einblicke zu: " + topic,
+                            hindi: topic + " के बारे में पेशेवर जानकारी",
+                            bengali: topic + " সম্পর্কে পেশাদার তথ্য",
+                            portuguese: "Ideias profissionais sobre: " + topic,
+                            japanese: topic + "に関する専門的な洞察",
+                            arabic: "رؤى مهنية حول: " + topic
+                        },
+                        point: {
+                            english: "▸ ",
+                            spanish: "▸ ",
+                            french: "▸ ",
+                            german: "▸ ",
+                            hindi: "▸ ",
+                            bengali: "▸ ",
+                            portuguese: "▸ ",
+                            japanese: "▸ ",
+                            arabic: "▸ "
+                        },
+                        hashtags: {
+                            english: "\n\n#LinkedInMarketing #ProfessionalDevelopment #ContentStrategy",
+                            spanish: "\n\n#MarketingEnLinkedIn #DesarrolloProfesional",
+                            french: "\n\n#MarketingLinkedIn #DeveloppementProfessionnel",
+                            german: "\n\n#LinkedInMarketing #BeruflicheEntwicklung",
+                            hindi: "\n\n#लिंक्डइनमार्केटिंग #पेशेवरविकास",
+                            bengali: "\n\n#লিঙ্কডইনমার্কেটিং #পেশাদারবিকাশ",
+                            portuguese: "\n\n#MarketingNoLinkedIn #DesenvolvimentoProfissional",
+                            japanese: "\n\n#LinkedInマーケティング #キャリア開発",
+                            arabic: "\n\n#تسويق_لينكدإن #التطور_المهني"
+                        }
+                    },
+                    tiktok: {
+                        intro: {
+                            english: "Quick takeaways about " + topic + " 👇",
+                            spanish: "Conclusiones rápidas sobre " + topic + " 👇",
+                            french: "Points clés sur " + topic + " 👇",
+                            german: "Kernaussagen zu " + topic + " 👇",
+                            hindi: topic + " के बारे में मुख्य बातें 👇",
+                            bengali: topic + " সম্পর্কে মূল পয়েন্ট 👇",
+                            portuguese: "Principais pontos sobre " + topic + " 👇",
+                            japanese: topic + "についての要点 👇",
+                            arabic: "أبرز النقاط حول " + topic + " 👇"
+                        },
+                        point: {
+                            english: "🔥 ",
+                            spanish: "🔥 ",
+                            french: "🔥 ",
+                            german: "🔥 ",
+                            hindi: "🔥 ",
+                            bengali: "🔥 ",
+                            portuguese: "🔥 ",
+                            japanese: "🔥 ",
+                            arabic: "🔥 "
+                        },
+                        hashtags: {
+                            english: "\n\n#TikTokMarketing #ContentCreator #VideoTips",
+                            spanish: "\n\n#MarketingEnTikTok #CreadorDeContenido",
+                            french: "\n\n#MarketingTikTok #CreateurDeContenu",
+                            german: "\n\n#TikTokMarketing #ContentErsteller",
+                            hindi: "\n\n#टिकटॉकमार्केटिंग #कंटेंटक्रिएटर",
+                            bengali: "\n\n#টিকটকমার্কেটিং #কন্টেন্টক্রিয়েটর",
+                            portuguese: "\n\n#MarketingNoTikTok #CriadorDeConteudo",
+                            japanese: "\n\n#TikTokマーケティング #コンテンツクリエイター",
+                            arabic: "\n\n#تسويق_تيك_توك #منشئ_المحتوى"
+                        }
+                    }
+                };
+                
+                const template = platformTemplates[platform] || platformTemplates.instagram;
+                let result = template.intro[language] + "\n\n";
+                
+                // Generate 3-5 key points based on the topic
+                const keyPoints = generateKeyPoints(topic, details, language);
+                
+                keyPoints.forEach((point, i) => {
+                    result += template.point[language] + point + "\n\n";
+                });
+                
+                // Add call to action
+                const ctas = {
+                    english: "What do you think about these points? Comment below!",
+                    spanish: "¿Qué opinas de estos puntos? ¡Comenta abajo!",
+                    french: "Que pensez-vous de ces points ? Commentez ci-dessous !",
+                    german: "Was denkst du über diese Punkte? Kommentiere unten!",
+                    hindi: "आप इन बातों के बारे में क्या सोचते हैं? नीचे टिप्पणी करें!",
+                    bengali: "আপনি এই পয়েন্ট সম্পর্কে কি মনে করেন? নিচে মন্তব্য করুন!",
+                    portuguese: "O que você acha desses pontos? Comente abaixo!",
+                    japanese: "これらのポイントについてどう思いますか？ 以下にコメントしてください！",
+                    arabic: "ما رأيك في هذه النقاط؟ اكتب تعليقًا أدناه!"
+                };
+                
+                result += ctas[language];
+                
+                // Add hashtags if platform supports them
+                if (platform !== 'linkedin') {
+                    result += template.hashtags[language];
+                }
+                
+                return result;
+            }
+            
+            function generateKeyPoints(topic, details, language) {
+                // This would be replaced with actual AI API call in production
+                // For demo purposes, we'll return some generic points based on the topic
+                const points = {
+                    english: [
+                        `The importance of ${topic} in today's digital landscape`,
+                        `Key strategies for effective ${topic}`,
+                        `Common mistakes to avoid with ${topic}`,
+                        `How to measure success with ${topic}`,
+                        `Future trends in ${topic}`
+                    ],
+                    spanish: [
+                        `La importancia de ${topic} en el panorama digital actual`,
+                        `Estrategias clave para ${topic} efectivo`,
+                        `Errores comunes que evitar con ${topic}`,
+                        `Cómo medir el éxito con ${topic}`,
+                        `Tendencias futuras en ${topic}`
+                    ],
+                    french: [
+                        `L'importance de ${topic} dans le paysage numérique actuel`,
+                        `Stratégies clés pour un ${topic} efficace`,
+                        `Erreurs courantes à éviter avec ${topic}`,
+                        `Comment mesurer le succès avec ${topic}`,
+                        `Tendances futures dans ${topic}`
+                    ],
+                    german: [
+                        `Die Bedeutung von ${topic} in der heutigen digitalen Landschaft`,
+                        `Wichtige Strategien für effektives ${topic}`,
+                        `Häufige Fehler mit ${topic} zu vermeiden`,
+                        `Wie man Erfolg mit ${topic} misst`,
+                        `Zukünftige Trends in ${topic}`
+                    ],
+                    hindi: [
+                        `आज के डिजिटल परिदृश्य में ${topic} का महत्व`,
+                        `प्रभावी ${topic} के लिए प्रमुख रणनीतियाँ`,
+                        `${topic} के साथ कौन सी गलतियाँ न करें`,
+                        `${topic} के साथ सफलता को कैसे मापें`,
+                        `${topic} में भविष्य के रुझान`
+                    ],
+                    bengali: [
+                        `আজকের ডিজিটাল ল্যান্ডস্কেপে ${topic} এর গুরুত্ব`,
+                        `কার্যকর ${topic} এর জন্য মূল কৌশল`,
+                        `${topic} এর সাথে যে ভুলগুলি এড়ানো উচিত`,
+                        `${topic} এর সাথে সাফল্য কিভাবে পরিমাপ করবেন`,
+                        `${topic} এ ভবিষ্যতের প্রবণতা`
+                    ],
+                    portuguese: [
+                        `A importância de ${topic} no cenário digital atual`,
+                        `Estratégias-chave para ${topic} eficaz`,
+                        `Erros comuns a evitar com ${topic}`,
+                        `Como medir o sucesso com ${topic}`,
+                        `Tendências futuras em ${topic}`
+                    ],
+                    japanese: [
+                        `現代のデジタル環境における${topic}の重要性`,
+                        `効果的な${topic}のための主要な戦略`,
+                        `${topic}で避けるべき一般的な間違い`,
+                        `${topic}で成功を測定する方法`,
+                        `${topic}の将来のトレンド`
+                    ],
+                    arabic: [
+                        `أهمية ${topic} في المشهد الرقمي اليوم`,
+                        `استراتيجيات رئيسية لـ ${topic} فعال`,
+                        `أخطاء شائعة يجب تجنبها مع ${topic}`,
+                        `كيفية قياس النجاح مع ${topic}`,
+                        `اتجاهات مستقبلية في ${topic}`
+                    ]
+                };
+                
+                // Return 3-5 random points
+                const shuffled = points[language].sort(() => 0.5 - Math.random());
+                return shuffled.slice(0, 3 + Math.floor(Math.random() * 2));
+            }
+            
+            function copyToClipboard(content, platform) {
+                navigator.clipboard.writeText(content).then(() => {
+                    alert(`${platform} content copied to clipboard!`);
+                });
+            }
+            
+            function downloadContent(content, filename) {
+                const blob = new Blob([content], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${filename}-content.txt`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }
+            
+            // Copy all content
+            copyAllBtn.addEventListener('click', function() {
+                let allContent = "";
+                document.querySelectorAll('.platform-content p').forEach(p => {
+                    const platform = p.parentElement.querySelector('.copy-platform-btn').getAttribute('data-platform');
+                    const language = p.parentElement.querySelector('.copy-platform-btn').getAttribute('data-language');
+                    allContent += `=== ${platform.toUpperCase()} (${language.toUpperCase()}) ===\n\n`;
+                    allContent += p.textContent + "\n\n\n";
+                });
+                
+                copyToClipboard(allContent, "All Platforms");
+            });
+            
+            // Download all content
+            downloadAllBtn.addEventListener('click', function() {
+                let allContent = "";
+                document.querySelectorAll('.platform-content p').forEach(p => {
+                    const platform = p.parentElement.querySelector('.copy-platform-btn').getAttribute('data-platform');
+                    const language = p.parentElement.querySelector('.copy-platform-btn').getAttribute('data-language');
+                    allContent += `=== ${platform.toUpperCase()} (${language.toUpperCase()}) ===\n\n`;
+                    allContent += p.textContent + "\n\n\n";
+                });
+                
+                const blob = new Blob([allContent], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'all-platform-content.txt';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            });
+        });
+    </script>
+</body>
+</html>
