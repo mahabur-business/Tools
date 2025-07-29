@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Thumbnail & Title Combiner | YouTube Tools - Create Perfect YouTube Content</title>
+    <meta name="description" content="Free AI-powered tool that generates perfect YouTube thumbnail and title combinations to boost your CTR and views. Smart suggestions for creators.">
+    <meta name="keywords" content="YouTube thumbnail generator, title generator, thumbnail title combiner, YouTube CTR tool, video SEO, content creation tool">
+    <meta name="author" content="YouTube Tools">
+    <meta property="og:title" content="AI Thumbnail & Title Combiner | YouTube Tools">
+    <meta property="og:description" content="Generate perfect YouTube thumbnail and title combinations with our free AI-powered tool">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://youtubetools.example.com/thumbnail-title-combiner">
+    <meta name="robots" content="index, follow">
+    
+    <style>
+        :root {
+            --primary-color: #FF0000;
+            --secondary-color: #282828;
+            --accent-color: #4285F4;
+            --light-color: #f9f9f9;
+            --dark-color: #212121;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .hero {
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .tool-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .input-section {
+            margin-bottom: 2rem;
+        }
+        
+        .input-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        textarea, input[type="text"] {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .options {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        select {
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #cc0000;
+        }
+        
+        .secondary-btn {
+            background-color: var(--accent-color);
+        }
+        
+        .secondary-btn:hover {
+            background-color: #3367d6;
+        }
+        
+        .results-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .result-card {
+            background-color: var(--light-color);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .result-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .thumbnail-preview {
+            height: 180px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .thumbnail-preview canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        
+        .result-content {
+            padding: 1.5rem;
+        }
+        
+        .result-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+        
+        .result-stats {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .result-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .result-actions button {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            flex: 1;
+        }
+        
+        .features {
+            padding: 3rem 0;
+            background-color: white;
+        }
+        
+        .features h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            border-top: 1px solid #444;
+            padding-top: 1rem;
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .controls {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .results-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-section {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="https://via.placeholder.com/40" alt="YouTube Tools Logo">
+                <h1>YouTube Tools</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/tools">All Tools</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section class="hero">
+            <h2>Thumbnail + Title Smart Combiner</h2>
+            <p>Generate perfect YouTube thumbnail and title combinations that boost your CTR and attract more viewers using our AI-powered tool.</p>
+        </section>
+        
+        <section class="tool-container">
+            <div class="input-section">
+                <h3>Describe Your Video Content</h3>
+                <textarea id="videoDescription" placeholder="Describe your video content, target audience, and any specific elements you want to highlight..."></textarea>
+                
+                <div class="options">
+                    <div style="flex: 1;">
+                        <h3>Video Category</h3>
+                        <select id="videoCategory" style="width: 100%;">
+                            <option value="all">All Categories</option>
+                            <option value="education">Education</option>
+                            <option value="entertainment">Entertainment</option>
+                            <option value="gaming">Gaming</option>
+                            <option value="lifestyle">Lifestyle</option>
+                            <option value="tech">Technology</option>
+                            <option value="music">Music</option>
+                            <option value="howto">How-to & DIY</option>
+                        </select>
+                    </div>
+                    
+                    <div style="flex: 1;">
+                        <h3>Thumbnail Style</h3>
+                        <select id="thumbnailStyle" style="width: 100%;">
+                            <option value="any">Any Style</option>
+                            <option value="minimal">Minimal</option>
+                            <option value="bold">Bold & Colorful</option>
+                            <option value="dark">Dark Theme</option>
+                            <option value="light">Light Theme</option>
+                        </select>
+                    </div>
+                    
+                    <div style="flex: 1;">
+                        <h3>Title Style</h3>
+                        <select id="titleStyle" style="width: 100%;">
+                            <option value="any">Any Title Style</option>
+                            <option value="question">Question</option>
+                            <option value="list">List</option>
+                            <option value="shocking">Shocking Statement</option>
+                            <option value="howto">How-To</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button id="generateBtn">
+                    <span id="generateBtnText">Generate Combinations</span>
+                    <span id="generateBtnLoader" style="display: none;" class="loading"></span>
+                </button>
+            </div>
+            
+            <div id="resultsSection" style="display: none;">
+                <h3>AI-Generated Thumbnail + Title Combinations</h3>
+                <p>Our AI analyzed your content and generated these optimized combinations to maximize your CTR:</p>
+                
+                <div class="results-container" id="resultsContainer">
+                    <!-- Results will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </section>
+        
+        <section class="features">
+            <h2>Why Use Our Thumbnail + Title Combiner?</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Boost Click-Through Rates</h3>
+                    <p>Our AI generates proven high-CTR combinations based on analysis of thousands of successful videos.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Save Design Time</h3>
+                    <p>Get ready-to-use thumbnail concepts instead of starting from scratch with blank designs.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Content Alignment</h3>
+                    <p>Thumbnails and titles are designed to work together to accurately represent your content.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Trend Awareness</h3>
+                    <p>Our AI stays updated with current YouTube design trends in your niche.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>A/B Testing</h3>
+                    <p>Generate multiple options to test different approaches with your audience.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>SEO Optimization</h3>
+                    <p>Titles include relevant keywords while maintaining natural language.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>YouTube Tools</h3>
+                    <p>Powerful tools for YouTube creators, marketers, and video enthusiasts.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/tools">All Tools</a></li>
+                        <li><a href="/privacy">Privacy Policy</a></li>
+                        <li><a href="/terms">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Popular Tools</h3>
+                    <ul>
+                        <li><a href="/video-rewriter">Video Rewriter</a></li>
+                        <li><a href="/thumbnail-generator">Thumbnail Generator</a></li>
+                        <li><a href="/tag-generator">Tag Generator</a></li>
+                        <li><a href="/analytics">Channel Analytics</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 YouTube Tools. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const generateBtn = document.getElementById('generateBtn');
+            const generateBtnText = document.getElementById('generateBtnText');
+            const generateBtnLoader = document.getElementById('generateBtnLoader');
+            const videoDescription = document.getElementById('videoDescription');
+            const videoCategory = document.getElementById('videoCategory');
+            const thumbnailStyle = document.getElementById('thumbnailStyle');
+            const titleStyle = document.getElementById('titleStyle');
+            const resultsSection = document.getElementById('resultsSection');
+            const resultsContainer = document.getElementById('resultsContainer');
+            
+            // Sample thumbnail background colors
+            const thumbnailColors = ['#FF5252', '#4285F4', '#34A853', '#FBBC05', '#EA4335', '#673AB7'];
+            
+            // Sample thumbnail text/design elements
+            const thumbnailElements = [
+                {text: "WATCH NOW", size: "large"},
+                {text: "NEW", size: "small", bg: "#FF0000"},
+                {text: "BEST", size: "small", bg: "#34A853"},
+                {text: "GUIDE", size: "medium"},
+                {text: "TUTORIAL", size: "medium"},
+                {text: "REVIEW", size: "medium"}
+            ];
+            
+            // Sample title structures
+            const titleStructures = [
+                "How to [Achieve Something] in [Timeframe]",
+                "[Number] [Adjective] Ways to [Do Something]",
+                "The Truth About [Topic] That [Group] Doesn't Want You to Know",
+                "I Tried [Thing] for [Timeframe] - Here's What Happened",
+                "[Controversial Statement] - [Explanation]",
+                "[Number] [Thing] That Will [Benefit]"
+            ];
+            
+            // Generate combinations
+            generateBtn.addEventListener('click', function() {
+                const description = videoDescription.value.trim();
+                if (!description) {
+                    alert('Please describe your video content');
+                    return;
+                }
+                
+                // Show loading state
+                generateBtnText.textContent = "Generating...";
+                generateBtnLoader.style.display = "inline-block";
+                generateBtn.disabled = true;
+                
+                resultsContainer.innerHTML = '<p style="grid-column:1/-1;text-align:center;">Our AI is creating the perfect thumbnail and title combinations for your video...</p>';
+                resultsSection.style.display = 'block';
+                
+                // Scroll to results
+                setTimeout(() => {
+                    resultsSection.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+                
+                // Simulate API delay
+                setTimeout(() => {
+                    generateResults(description);
+                    
+                    // Hide loading state
+                    generateBtnText.textContent = "Generate Again";
+                    generateBtnLoader.style.display = "none";
+                    generateBtn.disabled = false;
+                }, 2000);
+            });
+            
+            function generateResults(description) {
+                // Clear previous results
+                resultsContainer.innerHTML = '';
+                
+                // Generate 6 sample combinations
+                for (let i = 0; i < 6; i++) {
+                    const color = thumbnailColors[Math.floor(Math.random() * thumbnailColors.length)];
+                    const element = thumbnailElements[Math.floor(Math.random() * thumbnailElements.length)];
+                    const title = generateTitle(description);
+                    
+                    const card = document.createElement('div');
+                    card.className = 'result-card';
+                    
+                    card.innerHTML = `
+                        <div class="thumbnail-preview">
+                            <canvas id="thumbnailCanvas${i}" width="300" height="180"></canvas>
+                        </div>
+                        <div class="result-content">
+                            <div class="result-title">${title}</div>
+                            <div class="result-stats">
+                                <span>CTR: ${(Math.random() * 5 + 5).toFixed(1)}%</span>
+                                <span>Engagement: ${(Math.random() * 30 + 20).toFixed(0)}%</span>
+                            </div>
+                            <div class="result-actions">
+                                <button class="secondary-btn">Use This</button>
+                                <button>Save</button>
+                            </div>
+                        </div>
+                    `;
+                    
+                    resultsContainer.appendChild(card);
+                    
+                    // Draw the thumbnail
+                    drawThumbnail(i, color, element, title);
+                }
+            }
+            
+            function drawThumbnail(index, bgColor, element, title) {
+                const canvas = document.getElementById(`thumbnailCanvas${index}`);
+                const ctx = canvas.getContext('2d');
+                
+                // Draw background
+                ctx.fillStyle = bgColor;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                // Add gradient overlay
+                const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+                gradient.addColorStop(0, 'rgba(0,0,0,0.1)');
+                gradient.addColorStop(1, 'rgba(0,0,0,0.5)');
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                // Add element
+                ctx.fillStyle = element.bg || 'rgba(0,0,0,0.3)';
+                const fontSize = element.size === 'large' ? 24 : element.size === 'medium' ? 18 : 14;
+                const padding = element.size === 'large' ? 16 : element.size === 'medium' ? 12 : 8;
+                
+                ctx.font = `bold ${fontSize}px Arial`;
+                const textWidth = ctx.measureText(element.text).width;
+                const elementWidth = textWidth + padding * 2;
+                const elementHeight = fontSize + padding * 2;
+                const x = (canvas.width - elementWidth) / 2;
+                const y = canvas.height / 2 - elementHeight - 10;
+                
+                // Rounded rectangle
+                ctx.beginPath();
+                ctx.roundRect(x, y, elementWidth, elementHeight, 8);
+                ctx.fill();
+                
+                // Element text
+                ctx.fillStyle = 'white';
+                ctx.textAlign = 'center';
+                ctx.fillText(element.text, canvas.width / 2, y + elementHeight / 2 + fontSize / 3);
+                
+                // Add title text (first part)
+                const titlePart = title.split(' - ')[0].substring(0, 40);
+                ctx.font = 'bold 16px Arial';
+                ctx.fillStyle = 'white';
+                ctx.textAlign = 'center';
+                
+                // Add text shadow
+                ctx.shadowColor = 'rgba(0, 0, 0, 0.7)';
+                ctx.shadowBlur = 5;
+                ctx.shadowOffsetX = 1;
+                ctx.shadowOffsetY = 1;
+                
+                // Split title into two lines if needed
+                if (titlePart.length > 25) {
+                    const words = titlePart.split(' ');
+                    const midPoint = Math.floor(words.length / 2);
+                    const line1 = words.slice(0, midPoint).join(' ');
+                    const line2 = words.slice(midPoint).join(' ');
+                    
+                    ctx.fillText(line1, canvas.width / 2, canvas.height / 2 + 20);
+                    ctx.fillText(line2, canvas.width / 2, canvas.height / 2 + 45);
+                } else {
+                    ctx.fillText(titlePart, canvas.width / 2, canvas.height / 2 + 30);
+                }
+                
+                // Reset shadow
+                ctx.shadowColor = 'transparent';
+            }
+            
+            function generateTitle(description) {
+                // Extract keywords from description
+                const keywords = description.split(' ').filter(word => word.length > 4).slice(0, 3);
+                
+                // Select a random title structure based on selected style
+                let structures = [];
+                
+                switch(titleStyle.value) {
+                    case 'question':
+                        structures = [
+                            "How to [Achieve Something] in [Timeframe]?",
+                            "Can You [Do Something] in [Timeframe]?",
+                            "Why [Topic] is [Adjective] in [Year]?"
+                        ];
+                        break;
+                    case 'list':
+                        structures = [
+                            "[Number] [Adjective] Ways to [Do Something]",
+                            "[Number] [Things] That Will [Benefit] You",
+                            "[Number] Secrets About [Topic] You Need to Know"
+                        ];
+                        break;
+                    case 'shocking':
+                        structures = [
+                            "[Controversial Statement] - [Explanation]",
+                            "The Truth About [Topic] That [Group] Doesn't Want You to Know",
+                            "Stop [Doing Something] - Here's Why"
+                        ];
+                        break;
+                    case 'howto':
+                        structures = [
+                            "How to [Achieve Something] in [Timeframe]",
+                            "The Complete Guide to [Doing Something]",
+                            "[Do Something] Like a Pro - Step by Step"
+                        ];
+                        break;
+                    default:
+                        structures = titleStructures;
+                }
+                
+                const structure = structures[Math.floor(Math.random() * structures.length)];
+                
+                // Replace placeholders with keywords
+                return structure
+                    .replace('[Achieve Something]', keywords[0] || 'Success')
+                    .replace('[Timeframe]', ['1 Day', '1 Week', '5 Minutes', '24 Hours'][Math.floor(Math.random() * 4)])
+                    .replace('[Year]', new Date().getFullYear())
+                    .replace('[Number]', ['3', '5', '7', '10'][Math.floor(Math.random() * 4)])
+                    .replace('[Adjective]', ['Amazing', 'Simple', 'Proven', 'Secret'][Math.floor(Math.random() * 4)])
+                    .replace('[Do Something]', keywords[1] || 'Improve')
+                    .replace('[Topic]', keywords[2] || 'This')
+                    .replace('[Group]', ['Experts', 'They', 'Companies', 'Creators'][Math.floor(Math.random() * 4)])
+                    .replace('[Thing]', keywords[0] || 'This Method')
+                    .replace('[Things]', keywords[0] ? keywords[0] + 's' : 'These Methods')
+                    .replace('[Benefit]', ['Change Your Life', 'Save You Time', 'Make You Money'][Math.floor(Math.random() * 3)])
+                    .replace('[Controversial Statement]', ['This is Wrong', 'Everything You Know is False', 'Stop Doing This'][Math.floor(Math.random() * 3)])
+                    .replace('[Explanation]', ['Here\'s Why', 'The Real Reason', 'The Shocking Truth'][Math.floor(Math.random() * 3)])
+                    .replace('[Doing Something]', keywords[1] ? keywords[1] + 'ing' : 'Doing This');
+            }
+        });
+    </script>
+</body>
+</html>
