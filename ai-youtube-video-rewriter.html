@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI YouTube Video Rewriter Tool | YouTube Tools - Transform Video Content Instantly</title>
+    <meta name="description" content="Free AI-powered YouTube Video Rewriter tool that transforms video content into unique text while preserving meaning. Perfect for creators, marketers, and SEO specialists.">
+    <meta name="keywords" content="YouTube rewriter, AI video tool, content rewriter, video to text, YouTube SEO, content creation tool">
+    <meta name="author" content="YouTube Tools">
+    <meta property="og:title" content="AI YouTube Video Rewriter Tool | YouTube Tools">
+    <meta property="og:description" content="Transform YouTube video content into unique text with our free AI-powered tool">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://youtubetools.example.com/ai-rewriter">
+    <meta name="robots" content="index, follow">
+    
+    <style>
+        :root {
+            --primary-color: #FF0000;
+            --secondary-color: #282828;
+            --accent-color: #4285F4;
+            --light-color: #f9f9f9;
+            --dark-color: #212121;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .hero {
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .tool-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .input-section, .output-section {
+            margin-bottom: 2rem;
+        }
+        
+        .input-section h3, .output-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: vertical;
+            font-size: 1rem;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .options {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        select {
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #cc0000;
+        }
+        
+        .secondary-btn {
+            background-color: var(--accent-color);
+        }
+        
+        .secondary-btn:hover {
+            background-color: #3367d6;
+        }
+        
+        .features {
+            padding: 3rem 0;
+            background-color: white;
+        }
+        
+        .features h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            border-top: 1px solid #444;
+            padding-top: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .controls {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="https://via.placeholder.com/40" alt="YouTube Tools Logo">
+                <h1>YouTube Tools</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/tools">All Tools</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section class="hero">
+            <h2>AI YouTube Video Rewriter</h2>
+            <p>Transform any YouTube video content into fresh, unique text while preserving the original meaning. Perfect for content creators, marketers, and SEO specialists.</p>
+        </section>
+        
+        <section class="tool-container">
+            <div class="input-section">
+                <h3>Enter YouTube Video URL or Paste Your Text</h3>
+                <textarea id="inputText" placeholder="Paste YouTube video URL or directly input text content here..."></textarea>
+            </div>
+            
+            <div class="controls">
+                <div class="options">
+                    <select id="toneSelect">
+                        <option value="default">Default Tone</option>
+                        <option value="professional">Professional</option>
+                        <option value="casual">Casual</option>
+                        <option value="friendly">Friendly</option>
+                        <option value="authoritative">Authoritative</option>
+                    </select>
+                    <select id="languageSelect">
+                        <option value="en">English</option>
+                        <option value="es">Spanish</option>
+                        <option value="fr">French</option>
+                        <option value="de">German</option>
+                        <option value="bn">Bengali</option>
+                    </select>
+                </div>
+                <button id="rewriteBtn">Rewrite Content</button>
+            </div>
+            
+            <div class="output-section">
+                <h3>Rewritten Content</h3>
+                <textarea id="outputText" placeholder="Your rewritten content will appear here..." readonly></textarea>
+            </div>
+            
+            <div class="controls">
+                <button id="copyBtn" class="secondary-btn">Copy Text</button>
+                <button id="downloadBtn" class="secondary-btn">Download as TXT</button>
+                <button id="clearBtn">Clear All</button>
+            </div>
+        </section>
+        
+        <section class="features">
+            <h2>Why Use Our AI YouTube Video Rewriter?</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Content Repurposing</h3>
+                    <p>Easily transform your video content into blog posts, social media captions, or website content without duplicate content issues.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>SEO Optimization</h3>
+                    <p>Our AI maintains key SEO elements while rewriting, helping your content rank better in search engines.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Time Saving</h3>
+                    <p>Save hours of manual transcription and rewriting with our instant AI-powered solution.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Multi-Language Support</h3>
+                    <p>Rewrite content in multiple languages to reach a global audience with your message.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Tone Adaptation</h3>
+                    <p>Adjust the tone of your content to match different platforms and target audiences.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Plagiarism Reduction</h3>
+                    <p>Create unique versions of existing content to avoid plagiarism concerns.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>YouTube Tools</h3>
+                    <p>Powerful tools for YouTube creators, marketers, and video enthusiasts.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/tools">All Tools</a></li>
+                        <li><a href="/privacy">Privacy Policy</a></li>
+                        <li><a href="/terms">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Popular Tools</h3>
+                    <ul>
+                        <li><a href="/video-downloader">Video Downloader</a></li>
+                        <li><a href="/thumbnail-generator">Thumbnail Generator</a></li>
+                        <li><a href="/tag-generator">Tag Generator</a></li>
+                        <li><a href="/transcriber">Video Transcriber</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 YouTube Tools. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const rewriteBtn = document.getElementById('rewriteBtn');
+            const copyBtn = document.getElementById('copyBtn');
+            const downloadBtn = document.getElementById('downloadBtn');
+            const clearBtn = document.getElementById('clearBtn');
+            const inputText = document.getElementById('inputText');
+            const outputText = document.getElementById('outputText');
+            const toneSelect = document.getElementById('toneSelect');
+            const languageSelect = document.getElementById('languageSelect');
+            
+            // Simulate AI rewriting functionality
+            rewriteBtn.addEventListener('click', function() {
+                const text = inputText.value.trim();
+                if (!text) {
+                    alert('Please enter some text or a YouTube URL to rewrite');
+                    return;
+                }
+                
+                // Show loading state
+                outputText.value = "Rewriting content... (This is a simulation. In a real implementation, this would call an AI API)";
+                
+                // Simulate API delay
+                setTimeout(() => {
+                    // This is a mock response - in a real app, you would call an AI API here
+                    const mockRewrittenText = `Here is the AI-rewritten version of your content in ${languageSelect.options[languageSelect.selectedIndex].text} with a ${toneSelect.options[toneSelect.selectedIndex].text.toLowerCase()} tone:\n\n` +
+                    "The original content has been transformed by our advanced AI to create fresh, unique text while maintaining the core meaning. " +
+                    "This rewritten version avoids plagiarism while preserving all key information points. " +
+                    "The tone has been adjusted according to your preferences to better suit your target audience. " +
+                    "Remember to review the output as AI may occasionally require minor tweaks for perfect results.";
+                    
+                    outputText.value = mockRewrittenText;
+                }, 1500);
+            });
+            
+            // Copy functionality
+            copyBtn.addEventListener('click', function() {
+                if (!outputText.value.trim()) {
+                    alert('No content to copy');
+                    return;
+                }
+                
+                outputText.select();
+                document.execCommand('copy');
+                alert('Content copied to clipboard!');
+            });
+            
+            // Download functionality
+            downloadBtn.addEventListener('click', function() {
+                if (!outputText.value.trim()) {
+                    alert('No content to download');
+                    return;
+                }
+                
+                const blob = new Blob([outputText.value], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'rewritten-content.txt';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            });
+            
+            // Clear functionality
+            clearBtn.addEventListener('click', function() {
+                inputText.value = '';
+                outputText.value = '';
+            });
+        });
+    </script>
+</body>
+</html>
