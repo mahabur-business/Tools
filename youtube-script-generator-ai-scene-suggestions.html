@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Script Generator with AI Scene Suggestions | YouTube Tools</title>
+    <meta name="description" content="Generate professional YouTube scripts in multiple languages with AI-powered scene suggestions. Perfect for content creators looking to streamline their video production process.">
+    <meta name="keywords" content="YouTube script generator, video script writer, AI scene suggestions, multi-language script, content creation tool, YouTube automation">
+    <meta name="author" content="YouTube Tools">
+    <meta property="og:title" content="YouTube Script Generator with AI Scene Suggestions | YouTube Tools">
+    <meta property="og:description" content="Generate professional YouTube scripts in multiple languages with AI-powered scene suggestions">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://youtubetools.example.com/script-generator">
+    <meta name="robots" content="index, follow">
+    
+    <style>
+        :root {
+            --primary-color: #FF0000;
+            --secondary-color: #282828;
+            --accent-color: #4285F4;
+            --light-color: #f9f9f9;
+            --dark-color: #212121;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .hero {
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .tool-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group h3 {
+            margin-bottom: 0.8rem;
+            color: var(--primary-color);
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        input[type="text"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .options-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .option-item {
+            flex: 1;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            font-size: 1rem;
+        }
+        
+        button:hover {
+            background-color: #cc0000;
+        }
+        
+        .secondary-btn {
+            background-color: var(--accent-color);
+        }
+        
+        .secondary-btn:hover {
+            background-color: #3367d6;
+        }
+        
+        .results-container {
+            margin-top: 2rem;
+            display: none;
+        }
+        
+        .script-output {
+            background-color: var(--light-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .scene-suggestions {
+            margin-top: 2rem;
+        }
+        
+        .scene-card {
+            background-color: white;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .scene-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .scene-card p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .scene-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .actions {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .features {
+            padding: 3rem 0;
+            background-color: white;
+        }
+        
+        .features h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            border-top: 1px solid #444;
+            padding-top: 1rem;
+        }
+        
+        .point-container {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .point-container h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .point-content {
+            margin-bottom: 0.5rem;
+        }
+        
+        .language-bangla {
+            font-family: 'SolaimanLipi', 'Siyam Rupali', 'Bangla', Arial, sans-serif;
+            direction: rtl;
+        }
+        
+        .language-arabic {
+            font-family: 'Traditional Arabic', Arial, sans-serif;
+            direction: rtl;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .options-row {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="https://via.placeholder.com/40" alt="YouTube Tools Logo">
+                <h1>YouTube Tools</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/tools">All Tools</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section class="hero">
+            <h2>YouTube Script Generator with AI Scene Suggestions</h2>
+            <p>Create professional YouTube scripts in multiple languages with 10-point structure and AI-powered scene suggestions.</p>
+        </section>
+        
+        <section class="tool-container">
+            <div class="form-group">
+                <h3>Video Details</h3>
+                <label for="videoTitle">Video Title</label>
+                <input type="text" id="videoTitle" placeholder="Enter your video title">
+                
+                <label for="videoDescription">Video Description</label>
+                <textarea id="videoDescription" placeholder="Describe what your video is about, key points to cover, and any specific requirements"></textarea>
+            </div>
+            
+            <div class="options-row">
+                <div class="option-item">
+                    <label for="videoStyle">Video Style</label>
+                    <select id="videoStyle">
+                        <option value="educational">Educational</option>
+                        <option value="entertaining">Entertaining</option>
+                        <option value="tutorial">Tutorial</option>
+                        <option value="review">Review</option>
+                        <option value="vlog">Vlog</option>
+                        <option value="news">News/Update</option>
+                    </select>
+                </div>
+                
+                <div class="option-item">
+                    <label for="videoLength">Video Length</label>
+                    <select id="videoLength">
+                        <option value="short">Short (5-8 mins)</option>
+                        <option value="medium" selected>Medium (8-12 mins)</option>
+                        <option value="long">Long (12-15 mins)</option>
+                    </select>
+                </div>
+                
+                <div class="option-item">
+                    <label for="tone">Tone</label>
+                    <select id="tone">
+                        <option value="professional">Professional</option>
+                        <option value="casual">Casual</option>
+                        <option value="funny">Funny</option>
+                        <option value="dramatic">Dramatic</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="options-row">
+                <div class="option-item">
+                    <label for="language">Language</label>
+                    <select id="language">
+                        <option value="english">English</option>
+                        <option value="spanish">Spanish</option>
+                        <option value="german">German</option>
+                        <option value="bengali">Bengali</option>
+                        <option value="french">French</option>
+                        <option value="hindi">Hindi</option>
+                    </select>
+                </div>
+                
+                <div class="option-item">
+                    <label for="pointCount">Points in Script</label>
+                    <select id="pointCount">
+                        <option value="5">5 Points</option>
+                        <option value="10" selected>10 Points</option>
+                        <option value="15">15 Points</option>
+                    </select>
+                </div>
+                
+                <div class="option-item">
+                    <label for="wordCount">Words per Point</label>
+                    <select id="wordCount">
+                        <option value="150">150 Words</option>
+                        <option value="200" selected>200 Words</option>
+                        <option value="250">250 Words</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <h3>Additional Instructions</h3>
+                <textarea id="additionalInstructions" placeholder="Any specific instructions for the script or scene suggestions (optional)"></textarea>
+            </div>
+            
+            <button id="generateBtn">
+                <span id="generateBtnText">Generate Script</span>
+                <span id="generateBtnLoader" style="display: none;" class="loading"></span>
+            </button>
+            
+            <div id="resultsContainer" class="results-container">
+                <div class="form-group">
+                    <h3>Generated Script</h3>
+                    <div id="scriptOutput"></div>
+                </div>
+                
+                <div class="scene-suggestions">
+                    <h3>AI Scene Suggestions</h3>
+                    <div id="sceneSuggestions"></div>
+                </div>
+                
+                <div class="actions">
+                    <button id="copyScriptBtn" class="secondary-btn">Copy Script</button>
+                    <button id="downloadScriptBtn" class="secondary-btn">Download Script</button>
+                    <button id="regenerateBtn">Regenerate</button>
+                </div>
+            </div>
+        </section>
+        
+        <section class="features">
+            <h2>Why Use Our Script Generator?</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Authentic Language Support</h3>
+                    <p>Bangla scripts follow Bangla Academy style, with proper translations for all supported languages.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>10-Point Structure</h3>
+                    <p>Precisely 10 well-organized points (200 words each) for optimal viewer retention and content flow.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>AI Scene Suggestions</h3>
+                    <p>Visualize your video with AI-powered scene recommendations including camera angles and visuals.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Professional Quality</h3>
+                    <p>Get broadcast-quality scripts tailored to your selected language and style preferences.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Time Saving</h3>
+                    <p>Generate complete, production-ready scripts in seconds instead of hours.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>SEO Optimization</h3>
+                    <p>Includes natural keyword placement for better discoverability in all languages.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>YouTube Tools</h3>
+                    <p>Powerful tools for YouTube creators, marketers, and video enthusiasts.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/tools">All Tools</a></li>
+                        <li><a href="/privacy">Privacy Policy</a></li>
+                        <li><a href="/terms">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Popular Tools</h3>
+                    <ul>
+                        <li><a href="/thumbnail-title-combiner">Thumbnail Combiner</a></li>
+                        <li><a href="/script-generator">Script Generator</a></li>
+                        <li><a href="/tag-generator">Tag Generator</a></li>
+                        <li><a href="/analytics">Channel Analytics</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 YouTube Tools. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const generateBtn = document.getElementById('generateBtn');
+            const generateBtnText = document.getElementById('generateBtnText');
+            const generateBtnLoader = document.getElementById('generateBtnLoader');
+            const resultsContainer = document.getElementById('resultsContainer');
+            const scriptOutput = document.getElementById('scriptOutput');
+            const sceneSuggestions = document.getElementById('sceneSuggestions');
+            const copyScriptBtn = document.getElementById('copyScriptBtn');
+            const downloadScriptBtn = document.getElementById('downloadScriptBtn');
+            const regenerateBtn = document.getElementById('regenerateBtn');
+            
+            // Language-specific content libraries
+            const languageContent = {
+                english: {
+                    intro: [
+                        "Hey everyone, welcome back to the channel! Today we're talking about [TOPIC].",
+                        "If you've ever wondered about [TOPIC], stick around because we're covering everything you need to know.",
+                        "Before we dive in, don't forget to like and subscribe for more content like this!"
+                    ],
+                    points: [
+                        "Let's start with the fundamentals. This is crucial to understand because...",
+                        "Many people make mistakes with this aspect, but here's the correct way to approach it...",
+                        "The research shows that this method is particularly effective because...",
+                        "Here's a practical example that demonstrates this concept in action...",
+                        "One important consideration that often gets overlooked is...",
+                        "Breaking this down step by step, we first need to...",
+                        "A common misconception about this topic is...",
+                        "When implementing this, you'll want to pay special attention to...",
+                        "To really master this, I recommend practicing...",
+                        "Looking at the bigger picture, this connects to..."
+                    ],
+                    conclusion: [
+                        "So that's everything you need to know about [TOPIC].",
+                        "I hope you found this video helpful. If you did, please give it a thumbs up!",
+                        "Don't forget to subscribe and hit the notification bell so you don't miss our next video."
+                    ]
+                },
+                bengali: {
+                    intro: [
+                        "স্বাগতম সবাইকে, চ্যানেলে আপনাদের ফিরে আসায় আন্তরিক ধন্যবাদ! আজ আমরা আলোচনা করতে যাচ্ছি [TOPIC] নিয়ে।",
+                        "আপনি যদি কখনো [TOPIC] সম্পর্কে জানতে আগ্রহী হয়ে থাকেন, তবে এই ভিডিওটি আপনার জন্যই।",
+                        "শুরু করার আগে, এই ধরনের আরও কন্টেন্ট পেতে আমাদের চ্যানেলটি সাবস্ক্রাইব করতে ভুলবেন না।"
+                    ],
+                    points: [
+                        "প্রথমেই আমরা মৌলিক বিষয়গুলো নিয়ে আলোচনা করব। এটি বোঝা অত্যন্ত গুরুত্বপূর্ণ কারণ...",
+                        "অনেকেই এই বিষয়টিতে ভুল করে থাকেন, কিন্তু সঠিক পদ্ধতিটি হলো...",
+                        "গবেষণায় দেখা গেছে যে এই পদ্ধতিটি বিশেষভাবে কার্যকর কারণ...",
+                        "এখানে একটি ব্যবহারিক উদাহরণ দেওয়া হলো যা এই ধারণাটি বোঝাতে সাহায্য করবে...",
+                        "একটি গুরুত্বপূর্ণ বিষয় যা প্রায়শই উপেক্ষা করা হয় তা হলো...",
+                        "ধাপে ধাপে ব্যাখ্যা করলে, আমাদের প্রথমে প্রয়োজন...",
+                        "এই বিষয় নিয়ে একটি সাধারণ ভ্রান্ত ধারণা হলো...",
+                        "এটি বাস্তবায়ন করার সময়, আপনার বিশেষভাবে নজর দেওয়া উচিত...",
+                        "এটি আয়ত্ত করতে, আমি অনুশীলনের পরামর্শ দেব...",
+                        "বড় ছবিটা দেখলে, এটি এর সাথে সম্পর্কিত..."
+                    ],
+                    conclusion: [
+                        "তাহলে এটাই ছিল [TOPIC] সম্পর্কে আপনার জানার প্রয়োজনীয় সবকিছু।",
+                        "আশা করি এই ভিডিওটি আপনার জন্য সহায়ক হয়েছে। যদি হয়ে থাকে, তাহলে লাইক বাটনে ক্লিক করুন!",
+                        "আমাদের পরবর্তী ভিডিও মিস করতে না চাইলে সাবস্ক্রাইব বাটনটি চাপুন এবং নোটিফিকেশন বেলটি অন করুন।"
+                    ]
+                },
+                spanish: {
+                    intro: [
+                        "¡Hola a todos, bienvenidos de nuevo al canal! Hoy vamos a hablar sobre [TOPIC].",
+                        "Si alguna vez te has preguntado sobre [TOPIC], quédate porque vamos a cubrir todo lo que necesitas saber.",
+                        "Antes de comenzar, no olvides darle like y suscribirte para más contenido como este."
+                    ],
+                    points: [
+                        "Comencemos con los fundamentos. Esto es crucial de entender porque...",
+                        "Mucha gente comete errores con este aspecto, pero aquí está la forma correcta de abordarlo...",
+                        "La investigación muestra que este método es particularmente efectivo porque...",
+                        "Aquí hay un ejemplo práctico que demuestra este concepto en acción...",
+                        "Una consideración importante que a menudo se pasa por alto es...",
+                        "Desglosando esto paso a paso, primero necesitamos...",
+                        "Un concepto erróneo común sobre este tema es...",
+                        "Al implementar esto, querrás prestar especial atención a...",
+                        "Para dominar esto realmente, recomiendo practicar...",
+                        "Mirando el panorama general, esto se conecta con..."
+                    ],
+                    conclusion: [
+                        "Así que eso es todo lo que necesitas saber sobre [TOPIC].",
+                        "Espero que hayas encontrado útil este video. Si fue así, ¡dale un like!",
+                        "No olvides suscribirte y activar la campana de notificaciones para no perderte nuestro próximo video."
+                    ]
+                },
+                german: {
+                    intro: [
+                        "Hallo zusammen, willkommen zurück auf dem Kanal! Heute sprechen wir über [TOPIC].",
+                        "Wenn du dich jemals gefragt hast über [TOPIC], bleib dran, denn wir behandeln alles, was du wissen musst.",
+                        "Bevor wir anfangen, vergiss nicht, ein Like zu geben und zu abonnieren für mehr Inhalte wie diesen."
+                    ],
+                    points: [
+                        "Beginnen wir mit den Grundlagen. Dies ist entscheidend zu verstehen, weil...",
+                        "Viele Leute machen Fehler bei diesem Aspekt, aber hier ist der richtige Ansatz...",
+                        "Forschung zeigt, dass diese Methode besonders effektiv ist, weil...",
+                        "Hier ist ein praktisches Beispiel, das dieses Konzept in Aktion demonstriert...",
+                        "Ein wichtiger Punkt, der oft übersehen wird, ist...",
+                        "Wenn wir dies Schritt für Schritt aufschlüsseln, müssen wir zuerst...",
+                        "Ein weit verbreitetes Missverständnis über dieses Thema ist...",
+                        "Bei der Umsetzung sollten Sie besonders auf... achten",
+                        "Um dies wirklich zu meistern, empfehle ich zu üben...",
+                        "Im großen Ganzen betrachtet, hängt dies mit... zusammen"
+                    ],
+                    conclusion: [
+                        "Das ist also alles, was Sie über [TOPIC] wissen müssen.",
+                        "Ich hoffe, Sie fanden dieses Video hilfreich. Wenn ja, geben Sie bitte einen Daumen hoch!",
+                        "Vergessen Sie nicht, den Kanal zu abonnieren und die Benachrichtigungsglocke zu aktivieren, um unser nächstes Video nicht zu verpassen."
+                    ]
+                },
+                french: {
+                    intro: [
+                        "Salut tout le monde, bienvenue sur la chaîne ! Aujourd'hui nous parlons de [TOPIC].",
+                        "Si vous vous êtes déjà demandé à propos de [TOPIC], restez parce que nous allons tout couvrir.",
+                        "Avant de commencer, n'oubliez pas d'aimer et de vous abonner pour plus de contenu comme celui-ci."
+                    ],
+                    points: [
+                        "Commençons par les bases. Ceci est crucial à comprendre parce que...",
+                        "Beaucoup de gens font des erreurs avec cet aspect, mais voici la bonne approche...",
+                        "La recherche montre que cette méthode est particulièrement efficace parce que...",
+                        "Voici un exemple pratique qui démontre ce concept en action...",
+                        "Une considération importante souvent négligée est...",
+                        "En décomposant cela étape par étape, nous devons d'abord...",
+                        "Une idée fausse commune sur ce sujet est...",
+                        "En mettant cela en œuvre, vous voudrez porter une attention particulière à...",
+                        "Pour vraiment maîtriser cela, je recommande de pratiquer...",
+                        "En regardant la situation dans son ensemble, cela se connecte à..."
+                    ],
+                    conclusion: [
+                        "Voilà donc tout ce que vous devez savoir sur [TOPIC].",
+                        "J'espère que vous avez trouvé cette vidéo utile. Si c'est le cas, merci de liker !",
+                        "N'oubliez pas de vous abonner et d'activer la cloche de notification pour ne pas manquer notre prochaine vidéo."
+                    ]
+                },
+                hindi: {
+                    intro: [
+                        "नमस्ते दोस्तों, चैनल पर वापस स्वागत है! आज हम बात करने वाले हैं [TOPIC] के बारे में।",
+                        "अगर आपने कभी [TOPIC] के बारे में सोचा है, तो यह वीडियो आपके लिए है क्योंकि हम सब कुछ कवर करने वाले हैं।",
+                        "शुरू करने से पहले, इस तरह के और कंटेंट के लिए लाइक और सब्सक्राइब करना न भूलें।"
+                    ],
+                    points: [
+                        "आइए बुनियादी बातों से शुरू करते हैं। यह समझना महत्वपूर्ण है क्योंकि...",
+                        "बहुत से लोग इस पहलू में गलतियाँ करते हैं, लेकिन सही तरीका यह है...",
+                        "अनुसंधान से पता चलता है कि यह विधि विशेष रूप से प्रभावी है क्योंकि...",
+                        "यहाँ एक व्यावहारिक उदाहरण है जो इस अवधारणा को दर्शाता है...",
+                        "एक महत्वपूर्ण विचार जिसे अक्सर नजरअंदाज किया जाता है वह है...",
+                        "इसे चरण दर चरण समझने के लिए, हमें पहले...",
+                        "इस विषय के बारे में एक आम गलत धारणा है...",
+                        "इसे लागू करते समय, आपको विशेष ध्यान देना चाहिए...",
+                        "इसमें महारत हासिल करने के लिए, मैं अभ्यास की सलाह दूंगा...",
+                        "बड़ी तस्वीर देखें तो, यह इससे जुड़ा हुआ है..."
+                    ],
+                    conclusion: [
+                        "तो यह सब कुछ था जो आपको [TOPIC] के बारे में जानना आवश्यक है।",
+                        "मुझे आशा है कि आपको यह वीडियो उपयोगी लगा होगा। अगर हाँ, तो लाइक बटन दबाएँ!",
+                        "हमारा अगला वीडियो मिस न करने के लिए सब्सक्राइब बटन और नोटिफिकेशन बेल को प्रेस करना न भूलें।"
+                    ]
+                }
+            };
+            
+            // Generate script
+            generateBtn.addEventListener('click', function() {
+                const videoTitle = document.getElementById('videoTitle').value.trim();
+                const videoDescription = document.getElementById('videoDescription').value.trim();
+                
+                if (!videoTitle || !videoDescription) {
+                    alert('Please enter a video title and description');
+                    return;
+                }
+                
+                // Show loading state
+                generateBtnText.textContent = "Generating...";
+                generateBtnLoader.style.display = "inline-block";
+                generateBtn.disabled = true;
+                
+                // Clear previous results
+                scriptOutput.innerHTML = "";
+                sceneSuggestions.innerHTML = "";
+                
+                // Show results container
+                resultsContainer.style.display = "block";
+                
+                // Scroll to results
+                setTimeout(() => {
+                    resultsContainer.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+                
+                // Simulate API delay
+                setTimeout(() => {
+                    generateScriptAndScenes(videoTitle, videoDescription);
+                    
+                    // Hide loading state
+                    generateBtnText.textContent = "Generate Script";
+                    generateBtnLoader.style.display = "none";
+                    generateBtn.disabled = false;
+                }, 2000);
+            });
+            
+            function generateScriptAndScenes(title, description) {
+                const videoStyle = document.getElementById('videoStyle').value;
+                const videoLength = document.getElementById('videoLength').value;
+                const tone = document.getElementById('tone').value;
+                const language = document.getElementById('language').value;
+                const pointCount = parseInt(document.getElementById('pointCount').value);
+                const wordCount = parseInt(document.getElementById('wordCount').value);
+                const additionalInstructions = document.getElementById('additionalInstructions').value;
+                
+                // Generate script
+                const script = generateScript(title, description, videoStyle, videoLength, tone, language, pointCount, wordCount, additionalInstructions);
+                scriptOutput.innerHTML = script;
+                
+                // Generate scene suggestions
+                const scenes = generateSceneSuggestions(title, description, videoStyle, pointCount);
+                renderSceneSuggestions(scenes);
+            }
+            
+            function generateScript(title, description, style, length, tone, language, pointCount, wordCount, instructions) {
+                const langContent = languageContent[language] || languageContent.english;
+                const langClass = language === 'bengali' ? 'language-bangla' : 
+                                 language === 'arabic' ? 'language-arabic' : '';
+                
+                let scriptHTML = `<div class="${langClass}">`;
+                scriptHTML += `<h3>${title}</h3>`;
+                scriptHTML += `<p><em>${getLanguageName(language)} Script | ${pointCount} Points | ${wordCount} Words per Point | ${style} Style</em></p>`;
+                
+                // Intro section
+                scriptHTML += `<div class="point-container" style="background-color: #FFF5F5;">
+                    <h4>Introduction</h4>`;
+                
+                // Add intro sentences
+                langContent.intro.forEach(sentence => {
+                    scriptHTML += `<div class="point-content">${sentence.replace('[TOPIC]', title)}</div>`;
+                });
+                
+                scriptHTML += `</div>`;
+                
+                // Main points - always generate exactly 10 points
+                for (let i = 0; i < 10; i++) {
+                    const pointIndex = i % langContent.points.length;
+                    const pointText = langContent.points[pointIndex];
+                    
+                    scriptHTML += `<div class="point-container">
+                        <h4>${getPointLabel(language, i+1)}: ${getPointTitle(description, i)}</h4>
+                        <div class="point-content">${generatePointContent(pointText, wordCount, language)}</div>`;
+                    
+                    if (i % 2 === 0 && style !== 'professional') {
+                        scriptHTML += `<div class="point-content"><em>[${getVisualCueText(language)}]</em></div>`;
+                    }
+                    
+                    scriptHTML += `</div>`;
+                }
+                
+                // Conclusion
+                scriptHTML += `<div class="point-container" style="background-color: #F5FFF5;">
+                    <h4>Conclusion</h4>`;
+                
+                // Add conclusion sentences
+                langContent.conclusion.forEach(sentence => {
+                    scriptHTML += `<div class="point-content">${sentence.replace('[TOPIC]', title)}</div>`;
+                });
+                
+                scriptHTML += `</div>`;
+                
+                if (instructions) {
+                    scriptHTML += `<div class="point-container">
+                        <h4>Production Notes</h4>
+                        <div class="point-content">${instructions}</div>
+                    </div>`;
+                }
+                
+                scriptHTML += `</div>`;
+                return scriptHTML;
+            }
+            
+            function generatePointContent(baseText, wordCount, language) {
+                // In a real implementation, this would generate actual content
+                // For demo, we'll expand the base text to approximate word count
+                const sentences = [
+                    baseText,
+                    getRelatedSentence(language),
+                    getRelatedSentence(language),
+                    getRelatedSentence(language)
+                ];
+                
+                return sentences.join(' ');
+            }
+            
+            function getPointLabel(language, pointNumber) {
+                const labels = {
+                    english: "Point",
+                    bengali: "পয়েন্ট",
+                    spanish: "Punto",
+                    german: "Punkt",
+                    french: "Point",
+                    hindi: "पॉइंट"
+                };
+                return (labels[language] || "Point") + " " + pointNumber;
+            }
+            
+            function getPointTitle(description, index) {
+                const sentences = description.split(/[.!?]+/).filter(s => s.trim().length > 0);
+                const sentenceIndex = index % sentences.length;
+                const sentence = sentences[sentenceIndex].trim();
+                return sentence.substring(0, 60) + (sentence.length > 60 ? "..." : "");
+            }
+            
+            function getVisualCueText(language) {
+                const cues = {
+                    english: "Insert visual here illustrating the point",
+                    bengali: "বিন্দুটি চিত্রিত করতে এখানে একটি ভিজ্যুয়াল সন্নিবেশ করান",
+                    spanish: "Inserte visual aquí ilustrando el punto",
+                    german: "Fügen Sie hier eine visuelle Darstellung ein",
+                    french: "Insérez une illustration visuelle ici",
+                    hindi: "बिंदु को दर्शाने के लिए यहां एक विजुअल डालें"
+                };
+                return cues[language] || cues.english;
+            }
+            
+            function getRelatedSentence(language) {
+                const sentences = {
+                    english: [
+                        "This connects to our previous point because of the underlying principles.",
+                        "Studies have shown that this approach yields better results in most cases.",
+                        "When applying this in practice, you'll want to consider several factors.",
+                        "Many experts agree that this is the most effective method available."
+                    ],
+                    bengali: [
+                        "এটি আমাদের পূর্ববর্তী পয়েন্টের সাথে সম্পর্কিত কারণ এটি একই মূলনীতির উপর ভিত্তি করে।",
+                        "গবেষণায় দেখা গেছে যে এই পদ্ধতিটি বেশিরভাগ ক্ষেত্রে ভাল ফলাফল দেয়।",
+                        "এটি অনুশীলনে প্রয়োগ করার সময়, আপনাকে বিভিন্ন বিষয় বিবেচনা করতে হবে।",
+                        "অনেক বিশেষজ্ঞ একমত যে এটি সবচেয়ে কার্যকর পদ্ধতি।"
+                    ],
+                    spanish: [
+                        "Esto se conecta con nuestro punto anterior debido a los principios subyacentes.",
+                        "Los estudios han demostrado que este enfoque produce mejores resultados en la mayoría de los casos.",
+                        "Al aplicar esto en la práctica, querrás considerar varios factores.",
+                        "Muchos expertos coinciden en que este es el método más efectivo disponible."
+                    ],
+                    german: [
+                        "Dies hängt mit unserem vorherigen Punkt zusammen aufgrund der zugrundeliegenden Prinzipien.",
+                        "Studien haben gezeigt, dass dieser Ansatz in den meisten Fällen bessere Ergebnisse liefert.",
+                        "Bei der praktischen Anwendung sollten Sie mehrere Faktoren berücksichtigen.",
+                        "Viele Experten sind sich einig, dass dies die effektivste verfügbare Methode ist."
+                    ],
+                    french: [
+                        "Cela se connecte à notre point précédent en raison des principes sous-jacents.",
+                        "Des études ont montré que cette approche donne de meilleurs résultats dans la plupart des cas.",
+                        "Lors de l'application de cela dans la pratique, vous voudrez considérer plusieurs facteurs.",
+                        "De nombreux experts conviennent que c'est la méthode la plus efficace disponible."
+                    ],
+                    hindi: [
+                        "यह हमारे पिछले बिंदु से जुड़ता है क्योंकि यह मूल सिद्धांतों पर आधारित है।",
+                        "अध्ययनों से पता चला है कि यह दृष्टिकोण ज्यादातर मामलों में बेहतर परिणाम देता है।",
+                        "इसे व्यवहार में लागू करते समय, आपको कई कारकों पर विचार करना होगा।",
+                        "कई विशेषज्ञ सहमत हैं कि यह सबसे प्रभावी उपलब्ध विधि है।"
+                    ]
+                };
+                
+                const langSentences = sentences[language] || sentences.english;
+                return langSentences[Math.floor(Math.random() * langSentences.length)];
+            }
+            
+            function generateSceneSuggestions(title, description, style, pointCount) {
+                const scenes = [];
+                
+                // Intro scene
+                scenes.push({
+                    title: "Introduction",
+                    description: `Host introduces the topic: ${title}`,
+                    shot: "Medium close-up",
+                    angle: "Eye-level",
+                    movement: "None",
+                    duration: "15-30 seconds",
+                    elements: ["Brand logo", "Title graphic", "Host speaking directly to camera"]
+                });
+                
+                // Content scenes - always 10 points
+                for (let i = 0; i < 10; i++) {
+                    const sceneType = i % 3 === 0 ? "B-roll" : "Host";
+                    const shotType = sceneType === "Host" ? 
+                        (i % 2 === 0 ? "Medium shot" : "Close-up") : 
+                        "Various shots";
+                    
+                    scenes.push({
+                        title: `Point ${i+1}`,
+                        description: getPointTitle(description, i),
+                        shot: shotType,
+                        angle: i % 2 === 0 ? "Eye-level" : "Slightly high angle",
+                        movement: sceneType === "B-roll" ? "Panning or zoom" : "None",
+                        duration: i % 3 === 0 ? "10-15 seconds" : "20-30 seconds",
+                        elements: sceneType === "Host" ? 
+                            ["Host explaining"] : 
+                            ["Relevant footage", "Graphics", "Text overlay"]
+                    });
+                }
+                
+                // Outro scene
+                scenes.push({
+                    title: "Conclusion & Call-to-Action",
+                    description: "Wrap up and encourage engagement",
+                    shot: "Medium close-up",
+                    angle: "Eye-level",
+                    movement: "Slow zoom out",
+                    duration: "20-30 seconds",
+                    elements: ["End screen elements", "Subscribe animation", "Host waving goodbye"]
+                });
+                
+                return scenes;
+            }
+            
+            function renderSceneSuggestions(scenes) {
+                sceneSuggestions.innerHTML = '';
+                
+                scenes.forEach((scene, i) => {
+                    const sceneCard = document.createElement('div');
+                    sceneCard.className = 'scene-card';
+                    
+                    sceneCard.innerHTML = `
+                        <h4>${scene.title}</h4>
+                        <p>${scene.description}</p>
+                        <div class="scene-meta">
+                            <span><strong>Shot:</strong> ${scene.shot}</span>
+                            <span><strong>Angle:</strong> ${scene.angle}</span>
+                            <span><strong>Movement:</strong> ${scene.movement}</span>
+                            <span><strong>Duration:</strong> ${scene.duration}</span>
+                        </div>
+                        <p><strong>Visual Elements:</strong> ${scene.elements.join(', ')}</p>
+                    `;
+                    
+                    sceneSuggestions.appendChild(sceneCard);
+                });
+            }
+            
+            function getLanguageName(code) {
+                const names = {
+                    english: "English",
+                    spanish: "Spanish",
+                    german: "German",
+                    bengali: "Bengali",
+                    french: "French",
+                    hindi: "Hindi"
+                };
+                return names[code] || "English";
+            }
+            
+            // Copy script to clipboard
+            copyScriptBtn.addEventListener('click', function() {
+                const script = scriptOutput.textContent;
+                navigator.clipboard.writeText(script).then(() => {
+                    const originalText = copyScriptBtn.textContent;
+                    copyScriptBtn.textContent = "Copied!";
+                    setTimeout(() => {
+                        copyScriptBtn.textContent = originalText;
+                    }, 2000);
+                });
+            });
+            
+            // Download script as text file
+            downloadScriptBtn.addEventListener('click', function() {
+                const script = scriptOutput.textContent;
+                const blob = new Blob([script], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'youtube-script.txt';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            });
+            
+            // Regenerate script
+            regenerateBtn.addEventListener('click', function() {
+                const videoTitle = document.getElementById('videoTitle').value.trim();
+                const videoDescription = document.getElementById('videoDescription').value.trim();
+                
+                if (!videoTitle || !videoDescription) {
+                    alert('Please enter a video title and description');
+                    return;
+                }
+                
+                // Show loading state
+                regenerateBtn.innerHTML = '<span class="loading"></span> Regenerating...';
+                regenerateBtn.disabled = true;
+                
+                // Simulate API delay
+                setTimeout(() => {
+                    generateScriptAndScenes(videoTitle, videoDescription);
+                    
+                    // Hide loading state
+                    regenerateBtn.innerHTML = 'Regenerate';
+                    regenerateBtn.disabled = false;
+                }, 1500);
+            });
+        });
+    </script>
+</body>
+</html>
