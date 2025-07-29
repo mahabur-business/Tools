@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All YouTube Tools | YouTube Tools</title>
+    <meta name="description" content="Discover all our powerful YouTube tools to help you create, optimize, and grow your YouTube channel.">
+    <meta name="keywords" content="YouTube tools, video creator tools, YouTube optimization, content creation tools">
+    <meta name="author" content="YouTube Tools">
+    <meta property="og:title" content="All YouTube Tools | YouTube Tools">
+    <meta property="og:description" content="Discover all our powerful YouTube tools to help you create, optimize, and grow your YouTube channel.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://youtubetools.example.com/tools">
+    <meta name="robots" content="index, follow">
+    
+    <style>
+        :root {
+            --primary-color: #FF0000;
+            --secondary-color: #282828;
+            --accent-color: #4285F4;
+            --light-color: #f9f9f9;
+            --dark-color: #212121;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .hero {
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .tools-container {
+            padding: 2rem 0 4rem;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .tool-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .tool-image {
+            height: 200px;
+            background-color: #eee;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .tool-content {
+            padding: 1.5rem;
+        }
+        
+        .tool-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .tool-content p {
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .tool-btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .tool-btn:hover {
+            background-color: #cc0000;
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            border-top: 1px solid #444;
+            padding-top: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="https://via.placeholder.com/40" alt="YouTube Tools Logo">
+                <h1>YouTube Tools</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/tools">All Tools</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section class="hero">
+            <h2>All YouTube Tools</h2>
+            <p>Discover our collection of powerful tools designed to help you create, optimize, and grow your YouTube channel.</p>
+        </section>
+        
+        <section class="tools-container">
+            <div class="tools-grid">
+                <!-- Tool 1 -->
+                <div class="tool-card">
+                    <div class="tool-image" style="background-image: url('https://via.placeholder.com/600x400?text=AI+Rewriter');"></div>
+                    <div class="tool-content">
+                        <h3>1. AI YouTube Video Rewriter</h3>
+                        <p>Transform your existing videos into fresh content with our AI-powered rewriter. Perfect for repurposing content or creating variations.</p>
+                        <a href="/ai-video-rewriter" class="tool-btn">Try This Tool</a>
+                    </div>
+                </div>
+                
+                <!-- Tool 2 -->
+                <div class="tool-card">
+                    <div class="tool-image" style="background-image: url('https://via.placeholder.com/600x400?text=Thumbnail+Combiner');"></div>
+                    <div class="tool-content">
+                        <h3>2. Thumbnail + Title Smart Combiner</h3>
+                        <p>Generate high-converting thumbnail and title combinations that work together to maximize your click-through rates.</p>
+                        <a href="/thumbnail-combiner" class="tool-btn">Try This Tool</a>
+                    </div>
+                </div>
+                
+                <!-- Tool 3 -->
+                <div class="tool-card">
+                    <div class="tool-image" style="background-image: url('https://via.placeholder.com/600x400?text=Script+Generator');"></div>
+                    <div class="tool-content">
+                        <h3>3. YouTube Script Generator + AI Scene Suggestions</h3>
+                        <p>Create engaging video scripts complete with AI-powered scene suggestions to make your content more dynamic.</p>
+                        <a href="/script-generator" class="tool-btn">Try This Tool</a>
+                    </div>
+                </div>
+                
+                <!-- Tool 4 -->
+                <div class="tool-card">
+                    <div class="tool-image" style="background-image: url('https://via.placeholder.com/600x400?text=Multi-Platform');"></div>
+                    <div class="tool-content">
+                        <h3>4. Multi-Platform Content Generator</h3>
+                        <p>Repurpose your YouTube content for Instagram, TikTok, Twitter and more with just one click.</p>
+                        <a href="/multi-platform-generator" class="tool-btn">Try This Tool</a>
+                    </div>
+                </div>
+                
+                <!-- Tool 5 -->
+                <div class="tool-card">
+                    <div class="tool-image" style="background-image: url('https://via.placeholder.com/600x400?text=Comment+Reply');"></div>
+                    <div class="tool-content">
+                        <h3>5. AI Comment Reply Generator for YouTube</h3>
+                        <p>Generate perfect, personalized replies to YouTube comments instantly with our AI-powered tool.</p>
+                        <a href="/ai-comment-reply" class="tool-btn">Try This Tool</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>YouTube Tools</h3>
+                    <p>Powerful tools for YouTube creators, marketers, and video enthusiasts.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/tools">All Tools</a></li>
+                        <li><a href="/privacy">Privacy Policy</a></li>
+                        <li><a href="/terms">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Popular Tools</h3>
+                    <ul>
+                        <li><a href="/script-generator">Script Generator</a></li>
+                        <li><a href="/thumbnail-combiner">Thumbnail Combiner</a></li>
+                        <li><a href="/multi-platform-generator">Multi-Platform Generator</a></li>
+                        <li><a href="/ai-comment-reply">AI Comment Reply</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 YouTube Tools. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
