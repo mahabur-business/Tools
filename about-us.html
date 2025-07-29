@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | YouTube Tools</title>
+    <meta name="description" content="Learn about YouTube Tools - our mission, team, and the tools we create to help YouTube creators succeed.">
+    <meta name="keywords" content="about YouTube Tools, YouTube creator tools, our mission, our team">
+    <meta name="author" content="YouTube Tools">
+    <meta property="og:title" content="About Us | YouTube Tools">
+    <meta property="og:description" content="Learn about YouTube Tools and our mission to help creators.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://youtubetools.example.com/about">
+    
+    <style>
+        :root {
+            --primary-color: #FF0000;
+            --secondary-color: #282828;
+            --accent-color: #4285F4;
+            --light-color: #f9f9f9;
+            --dark-color: #212121;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .hero {
+            padding: 3rem 0;
+            text-align: center;
+            background-color: var(--primary-color);
+            color: white;
+            margin-bottom: 3rem;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .about-section {
+            padding: 2rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        .about-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 2rem;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        .about-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .about-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .team-section {
+            padding: 2rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        .team-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 2rem;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .team-member {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            border: 3px solid var(--primary-color);
+        }
+        
+        .team-member h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .team-member p.position {
+            color: var(--secondary-color);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .stats-section {
+            padding: 3rem 0;
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .stat-item h3 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-item p {
+            font-size: 1.2rem;
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            border-top: 1px solid #444;
+            padding-top: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="https://via.placeholder.com/40" alt="YouTube Tools Logo">
+                <h1>YouTube Tools</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/tools">All Tools</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section class="hero">
+            <h2>About YouTube Tools</h2>
+            <p>Empowering creators with innovative tools to grow their YouTube channels and engage their audiences</p>
+        </section>
+        
+        <section class="about-section">
+            <h2>Our Story</h2>
+            <div class="about-content">
+                <div class="about-card">
+                    <h3>Our Mission</h3>
+                    <p>At YouTube Tools, we believe that every creator deserves access to powerful, easy-to-use tools that can help them succeed on YouTube. Our mission is to simplify the content creation process, saving creators time and helping them focus on what matters most - creating amazing content.</p>
+                    <p>Founded in 2020 by a group of content creators and developers, we've grown from a small startup to a trusted resource for thousands of YouTubers worldwide.</p>
+                </div>
+                
+                <div class="about-card">
+                    <h3>What We Do</h3>
+                    <p>We develop specialized tools that address the unique challenges YouTube creators face every day. From AI-powered comment responses to video script generators, our tools are designed to:</p>
+                    <ul style="margin-left: 2rem; margin-top: 1rem;">
+                        <li>Save creators valuable time</li>
+                        <li>Improve audience engagement</li>
+                        <li>Enhance content quality</li>
+                        <li>Streamline workflow processes</li>
+                        <li>Provide data-driven insights</li>
+                    </ul>
+                </div>
+                
+                <div class="about-card">
+                    <h3>Our Values</h3>
+                    <p><strong>Creators First:</strong> We build tools that solve real problems creators face, based on continuous feedback from our community.</p>
+                    <p><strong>Innovation:</strong> We're constantly exploring new technologies (like AI) to create cutting-edge solutions.</p>
+                    <p><strong>Accessibility:</strong> Our tools are designed to be intuitive and accessible to creators at all levels.</p>
+                    <p><strong>Integrity:</strong> We're committed to ethical practices and protecting our users' privacy.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="stats-section">
+            <div class="container">
+                <h2 style="margin-bottom: 2rem;">By The Numbers</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h3>50,000+</h3>
+                        <p>Creators Served</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>15+</h3>
+                        <p>Powerful Tools</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>98%</h3>
+                        <p>Positive Feedback</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>24/7</h3>
+                        <p>Support Available</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="team-section">
+            <h2>Meet Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="https://via.placeholder.com/150" alt="Alex Johnson">
+                    <h3>Alex Johnson</h3>
+                    <p class="position">Founder & CEO</p>
+                    <p>Former YouTuber with 500k+ subscribers who saw the need for better creator tools.</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://via.placeholder.com/150" alt="Sarah Chen">
+                    <h3>Sarah Chen</h3>
+                    <p class="position">Head of Product</p>
+                    <p>Product designer with a passion for creating intuitive user experiences.</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://via.placeholder.com/150" alt="Michael Rodriguez">
+                    <h3>Michael Rodriguez</h3>
+                    <p class="position">Lead Developer</p>
+                    <p>Full-stack developer specializing in AI and machine learning applications.</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://via.placeholder.com/150" alt="Priya Patel">
+                    <h3>Priya Patel</h3>
+                    <p class="position">Community Manager</p>
+                    <p>Connects with creators to understand their needs and gather feedback.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="about-section" style="text-align: center;">
+            <h2>Join Our Community</h2>
+            <div class="about-card" style="max-width: 800px; margin: 0 auto;">
+                <p>We're always looking for feedback and suggestions to improve our tools. Join our community of creators and help shape the future of YouTube Tools!</p>
+                <button style="margin-top: 1.5rem; background-color: var(--primary-color); color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 4px; cursor: pointer; font-weight: 600;">Join Our Creator Community</button>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>YouTube Tools</h3>
+                    <p>Powerful tools for YouTube creators, marketers, and video enthusiasts.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/tools">All Tools</a></li>
+                        <li><a href="/privacy">Privacy Policy</a></li>
+                        <li><a href="/terms">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Popular Tools</h3>
+                    <ul>
+                        <li><a href="/script-generator">Script Generator</a></li>
+                        <li><a href="/thumbnail-combiner">Thumbnail Combiner</a></li>
+                        <li><a href="/multi-platform-generator">Multi-Platform Generator</a></li>
+                        <li><a href="/ai-comment-reply">AI Comment Reply</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 YouTube Tools. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
