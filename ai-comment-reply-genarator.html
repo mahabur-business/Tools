@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Comment Reply Generator for YouTube | YouTube Tools</title>
+    <meta name="description" content="Generate perfect replies to YouTube comments instantly with our AI-powered tool. Save time and engage your audience with personalized, professional responses.">
+    <meta name="keywords" content="YouTube comment replies, AI reply generator, YouTube engagement tool, comment response tool, YouTube creator tools">
+    <meta name="author" content="YouTube Tools">
+    <meta property="og:title" content="AI Comment Reply Generator for YouTube | YouTube Tools">
+    <meta property="og:description" content="Generate perfect replies to YouTube comments instantly with our AI-powered tool.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://youtubetools.example.com/ai-comment-reply">
+    <meta name="robots" content="index, follow">
+    
+    <style>
+        :root {
+            --primary-color: #FF0000;
+            --secondary-color: #282828;
+            --accent-color: #4285F4;
+            --light-color: #f9f9f9;
+            --dark-color: #212121;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .hero {
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .tool-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .input-section {
+            margin-bottom: 2rem;
+        }
+        
+        .input-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        textarea, input[type="text"], select {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            resize: vertical;
+        }
+        
+        textarea {
+            min-height: 150px;
+        }
+        
+        .tone-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .tone-option {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem;
+            border: 1px solid #eee;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .tone-option:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .tone-option input {
+            margin-right: 0.8rem;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        button:hover {
+            background-color: #cc0000;
+        }
+        
+        .secondary-btn {
+            background-color: var(--accent-color);
+        }
+        
+        .secondary-btn:hover {
+            background-color: #3367d6;
+        }
+        
+        .results-container {
+            margin-top: 2rem;
+            display: none;
+        }
+        
+        .reply-options {
+            margin-top: 1.5rem;
+        }
+        
+        .reply-card {
+            background-color: var(--light-color);
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .reply-card p {
+            margin-bottom: 1rem;
+            white-space: pre-line;
+        }
+        
+        .reply-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .reply-actions button {
+            padding: 0.5rem 0.8rem;
+            font-size: 0.9rem;
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .features {
+            padding: 3rem 0;
+            background-color: white;
+        }
+        
+        .features h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            border-top: 1px solid #444;
+            padding-top: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .tone-options {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="https://via.placeholder.com/40" alt="YouTube Tools Logo">
+                <h1>YouTube Tools</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/tools">All Tools</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section class="hero">
+            <h2>AI Comment Reply Generator</h2>
+            <p>Generate perfect, personalized replies to YouTube comments instantly with our AI-powered tool. Engage your audience and save time!</p>
+        </section>
+        
+        <section class="tool-container">
+            <div class="input-section">
+                <h3>Enter the YouTube Comment</h3>
+                <textarea id="commentInput" placeholder="Paste the YouTube comment you want to reply to here..."></textarea>
+            </div>
+            
+            <div class="input-section">
+                <h3>Additional Context (Optional)</h3>
+                <input type="text" id="videoTitle" placeholder="Video title (helps with personalization)">
+                <textarea id="additionalContext" placeholder="Any additional context about your channel or the video that might help generate better replies..."></textarea>
+            </div>
+            
+            <div class="input-section">
+                <h3>Select Reply Language</h3>
+                <select id="languageSelect">
+                    <option value="en">English</option>
+                    <option value="bn">বাংলা (Bengali)</option>
+                    <option value="es">Español (Spanish)</option>
+                    <option value="fr">Français (French)</option>
+                    <option value="de">Deutsch (German)</option>
+                    <option value="hi">हिन्दी (Hindi)</option>
+                    <option value="ar">العربية (Arabic)</option>
+                    <option value="pt">Português (Portuguese)</option>
+                    <option value="ru">Русский (Russian)</option>
+                    <option value="ja">日本語 (Japanese)</option>
+                </select>
+            </div>
+            
+            <div class="input-section">
+                <h3>Select Reply Tone</h3>
+                <div class="tone-options">
+                    <label class="tone-option">
+                        <input type="radio" name="tone" value="friendly" checked>
+                        Friendly
+                    </label>
+                    
+                    <label class="tone-option">
+                        <input type="radio" name="tone" value="professional">
+                        Professional
+                    </label>
+                    
+                    <label class="tone-option">
+                        <input type="radio" name="tone" value="funny">
+                        Funny
+                    </label>
+                    
+                    <label class="tone-option">
+                        <input type="radio" name="tone" value="enthusiastic">
+                        Enthusiastic
+                    </label>
+                    
+                    <label class="tone-option">
+                        <input type="radio" name="tone" value="grateful">
+                        Grateful
+                    </label>
+                </div>
+            </div>
+            
+            <button id="generateBtn">
+                <span id="generateBtnText">Generate Replies</span>
+                <span id="generateBtnLoader" style="display: none;" class="loading"></span>
+            </button>
+            
+            <div id="resultsContainer" class="results-container">
+                <h3>AI-Generated Reply Options</h3>
+                <p>Choose the reply that best fits your style or regenerate for more options:</p>
+                
+                <div class="reply-options" id="replyOptions">
+                    <!-- Replies will be inserted here by JavaScript -->
+                </div>
+                
+                <div class="actions" style="margin-top: 2rem;">
+                    <button id="regenerateBtn" class="secondary-btn">Generate More Options</button>
+                    <button id="copyAllBtn" class="secondary-btn">Copy All Replies</button>
+                </div>
+            </div>
+        </section>
+        
+        <section class="features">
+            <h2>Why Use Our AI Comment Reply Generator?</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Save Time</h3>
+                    <p>Generate thoughtful replies in seconds instead of spending minutes crafting each response manually.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Increase Engagement</h3>
+                    <p>Keep your audience engaged with personalized, high-quality responses to every comment.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Maintain Consistency</h3>
+                    <p>Ensure your brand voice remains consistent across all your YouTube interactions.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Handle Volume</h3>
+                    <p>Easily manage high comment volumes without sacrificing reply quality.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Multi-Language Support</h3>
+                    <p>Reply to comments in multiple languages while maintaining natural tone and phrasing.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Improve Relationships</h3>
+                    <p>Build stronger relationships with your viewers through thoughtful, timely responses.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>YouTube Tools</h3>
+                    <p>Powerful tools for YouTube creators, marketers, and video enthusiasts.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/tools">All Tools</a></li>
+                        <li><a href="/privacy">Privacy Policy</a></li>
+                        <li><a href="/terms">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Popular Tools</h3>
+                    <ul>
+                        <li><a href="/script-generator">Script Generator</a></li>
+                        <li><a href="/thumbnail-combiner">Thumbnail Combiner</a></li>
+                        <li><a href="/multi-platform-generator">Multi-Platform Generator</a></li>
+                        <li><a href="/ai-comment-reply">AI Comment Reply</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 YouTube Tools. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const generateBtn = document.getElementById('generateBtn');
+            const generateBtnText = document.getElementById('generateBtnText');
+            const generateBtnLoader = document.getElementById('generateBtnLoader');
+            const commentInput = document.getElementById('commentInput');
+            const videoTitle = document.getElementById('videoTitle');
+            const additionalContext = document.getElementById('additionalContext');
+            const languageSelect = document.getElementById('languageSelect');
+            const resultsContainer = document.getElementById('resultsContainer');
+            const replyOptions = document.getElementById('replyOptions');
+            const regenerateBtn = document.getElementById('regenerateBtn');
+            const copyAllBtn = document.getElementById('copyAllBtn');
+            
+            // Generate replies
+            generateBtn.addEventListener('click', function() {
+                const comment = commentInput.value.trim();
+                if (!comment) {
+                    alert('Please enter a YouTube comment to reply to');
+                    return;
+                }
+                
+                // Get selected tone and language
+                const tone = document.querySelector('input[name="tone"]:checked').value;
+                const language = languageSelect.value;
+                
+                // Show loading state
+                generateBtnText.textContent = "Generating...";
+                generateBtnLoader.style.display = "inline-block";
+                generateBtn.disabled = true;
+                
+                // Clear previous results
+                replyOptions.innerHTML = '';
+                
+                // Show results container
+                resultsContainer.style.display = "block";
+                
+                // Scroll to results
+                setTimeout(() => {
+                    resultsContainer.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+                
+                // Simulate API delay
+                setTimeout(() => {
+                    generateReplies(comment, tone, language, videoTitle.value, additionalContext.value);
+                    
+                    // Hide loading state
+                    generateBtnText.textContent = "Generate Replies";
+                    generateBtnLoader.style.display = "none";
+                    generateBtn.disabled = false;
+                }, 1500);
+            });
+            
+            // Regenerate replies
+            regenerateBtn.addEventListener('click', function() {
+                const comment = commentInput.value.trim();
+                if (!comment) {
+                    alert('Please enter a YouTube comment to reply to');
+                    return;
+                }
+                
+                // Get selected tone and language
+                const tone = document.querySelector('input[name="tone"]:checked').value;
+                const language = languageSelect.value;
+                
+                // Show loading state
+                regenerateBtn.innerHTML = '<span class="loading"></span> Generating...';
+                regenerateBtn.disabled = true;
+                
+                // Clear previous results
+                replyOptions.innerHTML = '';
+                
+                // Simulate API delay
+                setTimeout(() => {
+                    generateReplies(comment, tone, language, videoTitle.value, additionalContext.value);
+                    
+                    // Hide loading state
+                    regenerateBtn.textContent = "Generate More Options";
+                    regenerateBtn.disabled = false;
+                }, 1500);
+            });
+            
+            function generateReplies(comment, tone, language, title, context) {
+                // This would be replaced with actual AI API call in production
+                const replies = generateAIReplies(comment, tone, language, title, context);
+                
+                replies.forEach((reply, i) => {
+                    const replyCard = document.createElement('div');
+                    replyCard.className = 'reply-card';
+                    
+                    replyCard.innerHTML = `
+                        <p>${reply}</p>
+                        <div class="reply-actions">
+                            <button class="secondary-btn copy-reply-btn">Copy</button>
+                            <button class="edit-reply-btn">Edit</button>
+                        </div>
+                    `;
+                    
+                    replyOptions.appendChild(replyCard);
+                });
+                
+                // Add event listeners to new buttons
+                document.querySelectorAll('.copy-reply-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const reply = this.parentElement.parentElement.querySelector('p').textContent;
+                        copyToClipboard(reply, "reply");
+                    });
+                });
+                
+                document.querySelectorAll('.edit-reply-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const replyText = this.parentElement.parentElement.querySelector('p');
+                        const currentText = replyText.textContent;
+                        const newText = prompt("Edit your reply:", currentText);
+                        if (newText !== null) {
+                            replyText.textContent = newText;
+                        }
+                    });
+                });
+            }
+            
+            function generateAIReplies(comment, tone, language, title, context) {
+                // This is simulated AI generation - in production you would call an AI API
+                const tones = {
+                    friendly: {
+                        en: {
+                            starters: ["Thanks for your comment!", "Hey there!", "Appreciate you sharing your thoughts!", "Hi [Name]!"],
+                            connectors: ["I'm really glad you", "It's awesome that you", "Love that you", "So cool that you"],
+                            closers: ["Thanks again for watching!", "Let me know what you think!", "Appreciate you being part of our community!", "Looking forward to your thoughts on future videos!"]
+                        },
+                        bn: {
+                            starters: ["আপনার কমেন্টের জন্য ধন্যবাদ!", "হ্যালো!", "আপনার মতামত শেয়ার করার জন্য ধন্যবাদ!", "প্রিয় [নাম]!"],
+                            connectors: ["আমি সত্যিই আনন্দিত যে আপনি", "এটা সত্যিই দারুণ যে আপনি", "ভালো লাগলো যে আপনি", "অসাধারণ যে আপনি"],
+                            closers: ["আবারও দেখার জন্য ধন্যবাদ!", "আপনার মতামত জানাবেন!", "আমাদের কমিউনিটির অংশ হওয়ার জন্য ধন্যবাদ!", "ভবিষ্যতের ভিডিওগুলো নিয়ে আপনার মতামতের অপেক্ষায় থাকলাম!"]
+                        }
+                    },
+                    professional: {
+                        en: {
+                            starters: ["Thank you for your feedback.", "We appreciate your comment regarding", "Thank you for taking the time to share", "Regarding your comment about"],
+                            connectors: ["We've noted your perspective on", "Your observation about", "This is an important point about", "We value your input regarding"],
+                            closers: ["We appreciate your engagement with our content.", "Thank you for contributing to the discussion.", "Your feedback helps us improve our content.", "We welcome further discussion on this topic."]
+                        },
+                        bn: {
+                            starters: ["আপনার মতামতের জন্য ধন্যবাদ।", "আমরা আপনার মন্তব্যের প্রশংসা করি", "শেয়ার করার জন্য সময় দেওয়ার জন্য ধন্যবাদ", "আপনার মন্তব্য সম্পর্কে"],
+                            connectors: ["আমরা আপনার দৃষ্টিভঙ্গি লক্ষ্য করেছি", "আপনার পর্যবেক্ষণ সম্পর্কে", "এটি একটি গুরুত্বপূর্ণ বিষয়", "আমরা আপনার ইনপুটকে মূল্য দেই"],
+                            closers: ["আমাদের কন্টেন্টে আপনার সম্পৃক্ততার জন্য আমরা কৃতজ্ঞ।", "আলোচনায় অবদান রাখার জন্য ধন্যবাদ।", "আপনার মতামত আমাদের কন্টেন্ট উন্নত করতে সাহায্য করে।", "আমরা এই বিষয়ে আরও আলোচনা স্বাগত জানাই।"]
+                        }
+                    },
+                    funny: {
+                        en: {
+                            starters: ["😂 You made me spit out my coffee!", "OMG this comment wins the internet today!", "Stop it, you're making me blush! 😊", "Alert: Best comment detected!"],
+                            connectors: ["I can't believe you", "How dare you", "The way you", "This is the most"],
+                            closers: ["Never change!", "You're my favorite commenter now!", "I'm screenshotting this for posterity!", "BRB, framing this comment!"]
+                        },
+                        bn: {
+                            starters: ["😂 আপনি আমার কফি ফেলে দিয়েছেন!", "ওহে দারুণ! আজকের সেরা কমেন্ট!", "থামুন, আপনি আমাকে লজ্জা দিচ্ছেন! 😊", "সতর্কতা: সেরা কমেন্ট শনাক্ত করা হয়েছে!"],
+                            connectors: ["আমি বিশ্বাস করতে পারছি না যে আপনি", "আপনার সাহস কীভাবে হল", "আপনার যে ভাবে", "এটা সবচেয়ে"],
+                            closers: ["কখনো পরিবর্তন করবেন না!", "আপনি এখন আমার প্রিয় কমেন্টার!", "আমি এটি স্মরণীয় করার জন্য স্ক্রিনশট নিচ্ছি!", "একদম, এই কমেন্টটি ফ্রেম করে রাখবো!"]
+                        }
+                    },
+                    enthusiastic: {
+                        en: {
+                            starters: ["WOW! What an amazing comment!", "THIS! This comment right here! 👏", "You just made my day with this!", "HOLY MOLY! 😍"],
+                            connectors: ["I'm absolutely thrilled that you", "It means the world that you", "Your incredible insight about", "This brilliant observation that"],
+                            closers: ["You're the best! Thank you!!", "Can't wait to see you in the next video!", "My heart is full because of you!", "Sending virtual high fives!!"]
+                        },
+                        bn: {
+                            starters: ["ওয়াও! কি অসাধারণ একটি মন্তব্য!", "এই! এই মন্তব্যটি এখানে! 👏", "আপনি এই মন্তব্য দিয়ে আমার দিনটি সুন্দর করে দিলেন!", "অসাধারণ! 😍"],
+                            connectors: ["আমি সত্যিই উত্তেজিত যে আপনি", "এটা আমার জন্য অনেক অর্থপূর্ণ যে আপনি", "আপনার অবিশ্বাস্য অন্তর্দৃষ্টি সম্পর্কে", "এই উজ্জ্বল পর্যবেক্ষণ যে"],
+                            closers: ["আপনি সেরা! আপনাকে ধন্যবাদ!!", "পরের ভিডিওতে আপনাকে দেখার জন্য অপেক্ষায় থাকলাম!", "আপনার কারণে আমার হৃদয় পরিপূর্ণ!", "ভার্চুয়াল হাই ফাইভ পাঠাচ্ছি!!"]
+                        }
+                    },
+                    grateful: {
+                        en: {
+                            starters: ["I'm truly grateful for your comment.", "From the bottom of my heart, thank you.", "Your words mean so much to me.", "I'm deeply touched by your comment."],
+                            connectors: ["It's incredibly meaningful that you", "Your kindness in sharing that", "The thoughtfulness behind your", "Your support through this"],
+                            closers: ["I'm so grateful to have you here.", "Thank you for being part of this journey.", "Your support fuels my passion.", "With sincere appreciation."]
+                        },
+                        bn: {
+                            starters: ["আপনার মন্তব্যের জন্য আমি সত্যিই কৃতজ্ঞ।", "হৃদয়ের গভীর থেকে আপনাকে ধন্যবাদ।", "আপনার কথাগুলো আমার জন্য অনেক অর্থ বহন করে।", "আপনার মন্তব্য আমাকে গভীরভাবে স্পর্শ করেছে।"],
+                            connectors: ["এটা অত্যন্ত অর্থপূর্ণ যে আপনি", "শেয়ার করার জন্য আপনার দয়া", "আপনার চিন্তাভাবনার পিছনে", "এই মাধ্যমে আপনার সমর্থন"],
+                            closers: ["আপনাকে এখানে পেয়ে আমি খুবই কৃতজ্ঞ।", "এই যাত্রার অংশ হওয়ার জন্য ধন্যবাদ।", "আপনার সমর্থন আমার আবেগকে জ্বালানি দেয়।", "আন্তরিক কৃতজ্ঞতা সহ।"]
+                        }
+                    }
+                };
+                
+                // Default to English if language not found in tone
+                const toneData = tones[tone] || tones.friendly;
+                const langData = toneData[language] || toneData['en'];
+                
+                const starters = langData.starters;
+                const connectors = langData.connectors;
+                const closers = langData.closers;
+                
+                // Generate 3 different reply options
+                const replies = [];
+                
+                for (let i = 0; i < 3; i++) {
+                    const starter = starters[Math.floor(Math.random() * starters.length)];
+                    const connector = connectors[Math.floor(Math.random() * connectors.length)];
+                    const closer = closers[Math.floor(Math.random() * closers.length)];
+                    
+                    // Simple logic to personalize based on comment content
+                    let personalizedPart = "";
+                    if (comment.includes("?")) {
+                        if (language === 'bn') {
+                            personalizedPart = "চমৎকার প্রশ্ন! " + (tone === "funny" ? "উত্তর হল ৪২। ঠাট্টা করছি! " : "ব্যাখ্যা করছি: ");
+                        } else {
+                            personalizedPart = "Great question! " + (tone === "funny" ? "The answer is 42. Just kidding! " : "Let me explain: ");
+                        }
+                    } else if (comment.toLowerCase().includes("love") || comment.includes("❤")) {
+                        if (language === 'bn') {
+                            personalizedPart = tone === "funny" ? "আপনাকেও ভালোবাসা! " : "এটা অনেক অর্থ বহন করে! ";
+                        } else {
+                            personalizedPart = tone === "funny" ? "Right back at you! " : "That means a lot! ";
+                        }
+                    } else if (comment.length > 50) {
+                        if (language === 'bn') {
+                            personalizedPart = "আপনি খুব চিন্তাশীল মতামত দিয়েছেন! ";
+                        } else {
+                            personalizedPart = "You've shared such thoughtful feedback! ";
+                        }
+                    }
+                    
+                    // Include video title if provided
+                    let titleReference = "";
+                    if (title) {
+                        if (language === 'bn') {
+                            titleReference = tone === "professional" 
+                                ? ` "${title}" সম্পর্কে, ` 
+                                : tone === "funny"
+                                    ? ` "${title}" সম্পর্কে - যে ভিডিওতে আমি নিশ্চয়ই কোন ভুল করিনি! ` 
+                                    : ` "${title}" সম্পর্কে, `;
+                        } else {
+                            titleReference = tone === "professional" 
+                                ? ` Regarding "${title}", ` 
+                                : tone === "funny"
+                                    ? ` About "${title}" - that video where I definitely didn't make any mistakes! ` 
+                                    : ` About "${title}", `;
+                        }
+                    }
+                    
+                    // Build the reply
+                    const reply = `${starter} ${titleReference}${personalizedPart}${connector} ${comment.substring(0, 50)}... ${closer}`;
+                    replies.push(reply);
+                }
+                
+                return replies;
+            }
+            
+            function copyToClipboard(content, type) {
+                navigator.clipboard.writeText(content).then(() => {
+                    alert(`${type === "reply" ? "Reply" : "Content"} copied to clipboard!`);
+                });
+            }
+            
+            // Copy all replies
+            copyAllBtn.addEventListener('click', function() {
+                let allReplies = "";
+                document.querySelectorAll('.reply-card p').forEach((p, i) => {
+                    allReplies += `Option ${i + 1}:\n${p.textContent}\n\n`;
+                });
+                
+                copyToClipboard(allReplies, "all replies");
+            });
+        });
+    </script>
+</body>
+</html>
